@@ -1,6 +1,8 @@
 <h1>Doctor's <%= "#{@doctor.first_name} #{@doctor.last_name}" %> Personal Page</h1>
 
-<!-- doctor's avatar -->
+<% if @doctor.avatar.attached? %>
+  <%= cl_image_tag @doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+<% end %>
 <p><%= @rating %></p>
 <p><%= @doctor.about %></p>
 <ul>
@@ -14,7 +16,10 @@
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      <!-- user avatar -->
+      <% if review.user.avatar.attached? %>
+        <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %>
+      <% end %>
+
       <p><%= review.rating %></p>
       <p><%= review.date %></p>
       <p><%= review.content %></p>
