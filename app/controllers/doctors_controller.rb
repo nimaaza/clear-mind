@@ -6,13 +6,14 @@ class DoctorsController < ApplicationController
     @reviews = @doctor.reviews
     @articles = @doctor.articles
     @specializations = JSON.parse(@doctor.specializations)
+    @rating = average_rating(@reviews)
+  end
 
-    @rating = 0
+  private
 
-    @reviews.each do |review|
-      @rating += review.rating
-    end
-
-    @rating = (@rating / @reviews.size).round(2)
+  def average_rating(reviews)
+    rating = 0
+    reviews.each { |review| rating += review.rating }
+    (rating / reviews.size).round(2)
   end
 end
