@@ -1,0 +1,25 @@
+<h1>List of available specialists</h1>
+
+<ul>
+  <% @doctors.each do |doctor_hash| %>
+    <% doctor = doctor_hash[:doctor] %>
+    <% specializations = doctor_hash[:specializations] %>
+    <% rating = doctor_hash[:rating] %>
+
+    <% if doctor.avatar.attached? %>
+      <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+    <% end %>
+
+    <li>
+      <p><%= "#{doctor.first_name} #{doctor.last_name}" %></p>
+      <p><%= rating %></p>
+      <p><%= doctor.about %></p>
+
+      <ul>
+        <% specializations.each do |specialization| %>
+            <li><%= specialization %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

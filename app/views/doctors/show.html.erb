@@ -1,0 +1,39 @@
+<h1>Doctor's <%= "#{@doctor.first_name} #{@doctor.last_name}" %> Personal Page</h1>
+
+<% if @doctor.avatar.attached? %>
+  <%= cl_image_tag @doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+<% end %>
+<p><%= @rating %></p>
+<p><%= @doctor.about %></p>
+<ul>
+  <% @specializations.each do |specialization| %>
+      <li><%= specialization %></li>
+  <% end %>
+</ul>
+
+<hr>
+
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <% if review.user.avatar.attached? %>
+        <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %>
+      <% end %>
+
+      <p><%= review.rating %></p>
+      <p><%= review.date %></p>
+      <p><%= review.content %></p>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <h2><%= article.title %></h2>
+      <p><%= article.content %></p>
+    </li>
+  <% end %>
+</ul>
