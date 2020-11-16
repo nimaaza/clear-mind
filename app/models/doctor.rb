@@ -5,4 +5,6 @@ class Doctor < ApplicationRecord
   has_many :reviews
   has_many :appointments
   has_many :articles
+
+  has_one_attached :avatar
 end
