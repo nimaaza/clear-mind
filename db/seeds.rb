@@ -9,12 +9,12 @@
 puts 'cleaning the database...'
 
 Review.destroy_all
+Article.destroy_all
 Doctor.destroy_all
 User.destroy_all
-# Article.destroy_all
 # Appointment.destroy_all
 
-print 'creating users'
+print 'creating users (takes time)'
 
 nima = User.new(
   first_name: Faker::Name.first_name,
@@ -27,11 +27,20 @@ nima = User.new(
   password_confirmation: '123456'
 )
 
+nima.avatar.attach(
+  io: File.open('app/assets/images/avatars/1.png'),
+  filename: '1.png', content_type: 'image/png'
+)
+
 nima.save!
 
 print '.'
 
 14.times do |i|
+  avatars_asset_path = "app/assets/images/avatars/"
+  file_name = "#{i + 2}.png"
+  avatar_path = "#{avatars_asset_path}#{file_name}"
+
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -43,6 +52,11 @@ print '.'
     password_confirmation: '123456'
   )
 
+  user.avatar.attach(
+    io: File.open(avatar_path),
+    filename: file_name, content_type: 'image/png'
+  )
+
   user.save!
 
   print '.'
@@ -50,9 +64,13 @@ end
 
 puts ''
 
-print 'creating doctors'
+print 'creating doctors (takes a while)'
 
 15.times do |i|
+  avatars_asset_path = "app/assets/images/avatars/"
+  file_name = "#{i + 1}.png"
+  avatar_path = "#{avatars_asset_path}#{file_name}"
+
   specializations = []
 
   rand(1..3).times do
@@ -68,6 +86,11 @@ print 'creating doctors'
     about: Faker::Lorem.paragraph(sentence_count: 10)
   )
 
+  doctor.avatar.attach(
+    io: File.open(avatar_path),
+    filename: file_name, content_type: 'image/png'
+  )
+
   doctor.save!
 
   print '.'
@@ -75,7 +98,7 @@ end
 
 puts ''
 
-print 'creating reviews for doctors'
+print 'creating reviews for doctors (goes fast)'
 
 Doctor.all.each do |doctor|
   rand(5..10).times do
@@ -94,3 +117,22 @@ Doctor.all.each do |doctor|
 end
 
 puts ''
+
+print 'creating articles for doctors (goes faster)'
+
+Doctor.all.each do |doctor|
+  rand(1..3).times do
+    article = Article.new(
+      title: Faker::Lorem.sentence(word_count: 5),
+      content: Faker::Lorem.paragraphs(number: 20).join(' '),
+      doctor: doctor,
+    )
+
+    article.save!
+
+    print '.'
+  end
+end
+
+puts ''
+puts "first doctor id: #{Doctor.first.id}"
