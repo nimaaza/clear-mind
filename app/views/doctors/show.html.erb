@@ -1,15 +1,11 @@
 <h1>Doctor's <%= "#{@doctor.first_name} #{@doctor.last_name}" %> Personal Page</h1>
 
-<hr>
-
 <!-- doctor's avatar -->
-<h2> <%= @rating %> </h2>
-<p> <%= @doctor.about %> </p>
+<p><%= @rating %></p>
+<p><%= @doctor.about %></p>
 <ul>
   <% @specializations.each do |specialization| %>
-      <li>
-        <%= specialization %>
-      </li>
+      <li><%= specialization %></li>
   <% end %>
 </ul>
 
