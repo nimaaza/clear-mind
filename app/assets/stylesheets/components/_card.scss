@@ -1,0 +1,190 @@
+.card-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 20px 4px;
+  border-radius: 4px;
+}
+
+.card-trip > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-trip-btn{
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  padding: 4px;
+  border-radius: 4px;
+  color: white;
+  opacity: 0.7;
+  text-shadow: 0 0 4px black;
+}
+
+.card-trip-btn:hover{
+  opacity: 1;
+  color: white;
+}
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+// this is for my request page(Requests sent to me)
+
+.card-product {
+  overflow: hidden;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.card-product-btn {
+  position: absolute;
+  font-size: 20px;
+  color: black;
+}
+
+//this is css for pending requests
+.card-product-pending {
+  overflow: hidden;
+  height: 170px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-product-pending img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product-pending h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product-pending p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product-pending .card-product-infos {
+  padding: 16px;
+}
+
+.card-list {
+  list-style: none;
+}
+
+
+//this is for show page
+.card-product {
+  overflow: hidden;
+  height: 700px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: stretch;
+  margin: 20px;
+  padding: 40px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container img {
+  width: fit-content;
+  margin-left: 300px auto;
+  
+}
+
+.container p {
+  text-align: left;
+  font-size: 20px;
+}
+
+.m-2 {
+  margin: 0rem !important;
+}
