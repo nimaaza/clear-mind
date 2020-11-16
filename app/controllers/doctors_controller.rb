@@ -1,6 +1,18 @@
 class DoctorsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
+  def index
+    @doctors = []
+
+    Doctor.all.each do |doctor|
+      @doctors << {
+        doctor: doctor,
+        specializations: JSON.parse(doctor.specializations),
+        rating: average_rating(doctor.reviews)
+      }
+    end
+  end
+
   def show
     @doctor = Doctor.find(params[:id])
     @reviews = @doctor.reviews
