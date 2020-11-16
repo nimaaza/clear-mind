@@ -1,0 +1,38 @@
+<h1>Doctor's <%= "#{@doctor.first_name} #{@doctor.last_name}" %> Personal Page</h1>
+
+<hr>
+
+<!-- doctor's avatar -->
+<h2> <%= @rating %> </h2>
+<p> <%= @doctor.about %> </p>
+<ul>
+  <% @specializations.each do |specialization| %>
+      <li>
+        <%= specialization %>
+      </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <!-- user avatar -->
+      <p><%= review.rating %></p>
+      <p><%= review.date %></p>
+      <p><%= review.content %></p>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <h2><%= article.title %></h2>
+      <p><%= article.content %></p>
+    </li>
+  <% end %>
+</ul>
