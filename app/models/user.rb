@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :email, :phone_number, presence: true
+  validates :email, presence: true
 
   has_many :appointments
   has_many :reviews

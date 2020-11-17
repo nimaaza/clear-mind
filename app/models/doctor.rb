@@ -1,5 +1,5 @@
 class Doctor < ApplicationRecord
-  validates :specialization, :first_name, :last_name,
+  validates :specializations, :first_name, :last_name,
             :email, :phone_number, :about, presence: true
 
   has_many :reviews

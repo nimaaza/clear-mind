@@ -24,8 +24,8 @@ class DoctorsController < ApplicationController
   private
 
   def average_rating(reviews)
-    rating = 0
+    rating = 0.0
     reviews.each { |review| rating += review.rating }
-    (rating / reviews.size).round(2)
+    reviews.empty? ? 0 : (rating / reviews.size).round(1)
   end
 end
