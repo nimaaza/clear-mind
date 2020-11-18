@@ -13,17 +13,6 @@
 
 <hr>
 
-<%= form_with authenticity_token: true do |f| %>
-  <%= f.text_field :start_time,
-    data: {
-      controller: "flatpickr",
-      flatpickr_date_format: "Y-m-d",
-      flatpickr_min_date: Time.zone.now
-    } %>
-<% end %>
-
-<hr>
-
 <ul>
   <% @reviews.each do |review| %>
     <li>
@@ -49,26 +38,4 @@
   <% end %>
 </ul>
 
-<!-- Modal from Bootstrap -->
-<div class="modal fade" id="selectTimeSlotCenteredModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">
-          How long do you wish your meeting to last?
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input type="range" id="points" name="points" step="5" min="0" max="60">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal from Bootstrap -->
+<%= render 'shared/flatpickr', white_list_json: @white_list_json %>
