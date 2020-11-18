@@ -28,14 +28,14 @@ class Doctor < ApplicationRecord
 
     appointments.each do |appointment|
       start_time = appointment.appointment_start.getlocal
-      key = start_time.strftime("%Y-%m-%d")
+      key = start_time.strftime('%d/%m/%Y')
       start_hour = start_time.hour
 
       white_list[key] = make_work_hours(appointment) unless white_list.key?(key)
       white_list[key].delete(start_hour)
     end
 
-    white_list[Time.now.getlocal.strftime("%Y-%m-%d")] = [] if Time.now.getlocal.hour > 18
+    white_list[Time.now.getlocal.strftime('%d/%m/%Y')] = [] if Time.now.getlocal.hour > 18
 
     white_list
   end
@@ -43,7 +43,7 @@ class Doctor < ApplicationRecord
   def make_work_hours(appointment)
     start_time = appointment.appointment_start.getlocal
 
-    if start_time.strftime("%Y-%m-%d") == Time.now.strftime("%Y-%m-%d")
+    if start_time.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
       ((Time.now.hour + 1)..18).to_a
     else
       (9..18).to_a
