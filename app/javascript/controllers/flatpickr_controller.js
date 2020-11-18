@@ -9,7 +9,7 @@ const getAppointmentsJSON = () => {
 }
 
 const addCheckBoxesToForm = (appointments, date) => {
-  const radiosDiv = document.querySelector('#new_appointment div'); //getElementById('new_appointment');
+  const radiosDiv = document.querySelector('#new_appointment div');
   radiosDiv.innerHTML = '';
 
   appointments.forEach((appointment) => {
@@ -28,11 +28,17 @@ const addCheckBoxesToForm = (appointments, date) => {
                     type="submit" value="Book" disabled>';
   radiosDiv.insertAdjacentHTML('beforeend', submit);
 
+  const newAppointmentForm = document.getElementById('new_appointment');
   const submitButton = document.getElementById('submit-new-appointments-form');
   const radios = document.querySelectorAll('.radio-new-appointment-form');
+
   radios.forEach((radio) => {
     radio.addEventListener('change', () => submitButton.disabled = false);
   })
+
+  newAppointmentForm.addEventListener('submit', (event) => {
+    $('#selectTimeSlotCenteredModal').modal('hide');
+  });
 }
 
 // create a new Stimulus controller by extending stimulus-flatpickr wrapper controller
@@ -44,19 +50,16 @@ export default class extends Flatpickr {
   }
 
   change(date) {
-    date = date[0];
-    const key = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    dateAsKey = date[0].toLocaleDateString('en-GB');
     const freeAppointmentsJSON = getAppointmentsJSON();
-    let appointments = freeAppointmentsJSON[key];
+    let appointments = freeAppointmentsJSON[dateAsKey];
 
     if (!appointments) appointments = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 
     if (appointments.length > 0) {
-      addCheckBoxesToForm(appointments, key);
+      addCheckBoxesToForm(appointments, dateAsKey);
 
-      $('#selectTimeSlotCenteredModal').modal({
-        show: true
-      })
+      $('#selectTimeSlotCenteredModal').modal('show');
     }
   }
 }
