@@ -8,17 +8,17 @@ class Doctor < ApplicationRecord
 
   has_one_attached :avatar
 
+  def average_rating
+    rating = 0.0
+    reviews.each { |review| rating += review.rating }
+    reviews.empty? ? 0 : (rating / reviews.size).round(1)
+  end
+
   def free_appointments
     forthcoming_appointments = appointments
                                .where('appointment_start > ?', Time.now)
                                .order(appointment_start: :asc)
     make_white_list(forthcoming_appointments).to_json
-  end
-
-  def average_rating
-    rating = 0.0
-    reviews.each { |review| rating += review.rating }
-    reviews.empty? ? 0 : (rating / reviews.size).round(1)
   end
 
   private
@@ -34,6 +34,8 @@ class Doctor < ApplicationRecord
       white_list[key] = make_work_hours(appointment) unless white_list.key?(key)
       white_list[key].delete(start_hour)
     end
+
+    white_list[Time.now.getlocal.strftime("%Y-%m-%d")] = [] if Time.now.getlocal.hour > 18
 
     white_list
   end
