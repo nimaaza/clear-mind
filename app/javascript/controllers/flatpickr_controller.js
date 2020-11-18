@@ -50,7 +50,7 @@ export default class extends Flatpickr {
   }
 
   change(date) {
-    dateAsKey = date[0].toLocaleDateString('en-GB');
+    const dateAsKey = date[0].toLocaleDateString('en-GB');
     const freeAppointmentsJSON = getAppointmentsJSON();
     let appointments = freeAppointmentsJSON[dateAsKey];
 
