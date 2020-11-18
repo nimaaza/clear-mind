@@ -19,6 +19,7 @@ class DoctorsController < ApplicationController
     @articles = @doctor.articles
     @specializations = JSON.parse(@doctor.specializations)
     @rating = @doctor.average_rating
-    @white_list_json = @doctor.free_appointments
+    @appointment = Appointment.new
+    @appointments_white_list = @doctor.free_appointments
   end
 end
