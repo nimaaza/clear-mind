@@ -38,4 +38,7 @@
   <% end %>
 </ul>
 
-<%= render 'shared/flatpickr', white_list_json: @white_list_json %>
+<%= render 'shared/flatpickr',
+  appointments_white_list: @appointments_white_list,
+  doctor: @doctor,
+  appointment: @appointment %>
