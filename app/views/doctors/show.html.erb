@@ -1,18 +1,32 @@
-<h1>Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %>'s Personal Page</h1>
+<div class="container">
+  <div class="doctor-card">
+    <div class="doctor-card-infos">
+<%# <h1>Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %>
+<h1>Doctor's Page</h1>
 
 <% if @doctor.avatar.attached? %>
-  <%= cl_image_tag @doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+  <%# <%= cl_image_tag @doctor.avatar.key, height: 40, width: 40, crop: :fill %> 
+  <%= image_tag "https://images.pexels.com/photos/1573010/pexels-photo-1573010.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", class: "doctors_image" %>
 <% end %>
-<p><%= @rating %></p>
-<p><%= @doctor.about %></p>
-<ul>
-  <% @specializations.each do |specialization| %>
-      <li><%= specialization %></li>
-  <% end %>
-</ul>
+<%# <p><%= @rating %>
+<p>My name is Jeannie Meyers and I am a licensed clinical social worker. I have experience in counseling, case management, and worked with a variety of populations. I have 9 years’ experience working in the mental health field. I treated clients with depression, anxiety, bipolar disorder, relationship issues, stress management, and life transitions. 
+</p>
+<%# <p><%= @doctor.about %>
+<%# <ul> %>
+  <%# <% @specializations.each do |specialization| %>
+      <%# <li><%= specialization %>
+  <%# <% end %> 
+<%# </ul> %>
+<%# <%= link_to "Check Availability", "#", class: "btn btn-flat" %>
+    </div>
+  </div>
+</div>
 
 <hr>
 
+<div class="container-two">
+  <div class="review-card">
+    <div class="review-card-infos">
 <ul>
   <% @reviews.each do |review| %>
     <li>
@@ -26,9 +40,16 @@
     </li>
   <% end %>
 </ul>
+    </div>
+  </div>
+</div>
+
 
 <hr>
 
+<div class="container-three">
+  <div class="article-card">
+    <div class="article-card-infos">
 <ul>
   <% @articles.each do |article| %>
     <li>
@@ -37,3 +58,18 @@
     </li>
   <% end %>
 </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col-12 col-lg-8">
+
+</div>
+
+<div class="col-12 col-lg-4">
+
+</div>
+</div>
+</div>
