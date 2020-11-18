@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
     )
 
     date, hour = params[:slot].split(' ')
-    year, month, day = date.split('-')
+    day, month, year = date.split('/')
 
     appointment.appointment_start = Time.new(year, month, day, hour)
     appointment.appointment_end = Time.new(year, month, day, hour.to_i + 1)
