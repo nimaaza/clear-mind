@@ -1,16 +1,5 @@
-<div class="container">
-  <div class="doctor-card">
-    <div class="doctor-card-infos">
-<%# <h1>Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %>
-<h1>Doctor's Page</h1>
 
-<% if @doctor.avatar.attached? %>
-  <%# <%= cl_image_tag @doctor.avatar.key, height: 40, width: 40, crop: :fill %> 
-  <%= image_tag "https://images.pexels.com/photos/1573010/pexels-photo-1573010.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", class: "doctors_image" %>
-<% end %>
-<%# <p><%= @rating %>
-<p>My name is Jeannie Meyers and I am a licensed clinical social worker. I have experience in counseling, case management, and worked with a variety of populations. I have 9 years’ experience working in the mental health field. I treated clients with depression, anxiety, bipolar disorder, relationship issues, stress management, and life transitions. 
-</p>
+  
 <%# <p><%= @doctor.about %>
 <%# <ul> %>
   <%# <% @specializations.each do |specialization| %>
@@ -18,58 +7,79 @@
   <%# <% end %> 
 <%# </ul> %>
 <%# <%= link_to "Check Availability", "#", class: "btn btn-flat" %>
+  <div class= "d-flex justify-content-between"> 
+    
+  </div>
     </div>
   </div>
 </div>
 
 <hr>
 
-<div class="container-two">
+<%# <div class="container-two">
   <div class="review-card">
     <div class="review-card-infos">
 <ul>
   <% @reviews.each do |review| %>
-    <li>
+    <%# <li>
       <% if review.user.avatar.attached? %>
-        <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %>
-      <% end %>
+        <%# <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %> 
+      <%# <% end %> 
 
-      <p><%= review.rating %></p>
-      <p><%= review.date %></p>
-      <p><%= review.content %></p>
-    </li>
-  <% end %>
-</ul>
-    </div>
-  </div>
-</div>
+      <%# <p><%= review.rating %>
+      <%# <p><%= review.date %>
+      <%# <p><%= review.content %>
+    <%# </li> %>
+  <%# <% end %>
+<%# </ul> %>
+    <%# </div> %>
+  <%# </div> %>
+<%# </div> %>
 
 
 <hr>
 
-<div class="container-three">
+<%# <div class="container-three">
   <div class="article-card">
     <div class="article-card-infos">
 <ul>
   <% @articles.each do |article| %>
-    <li>
-      <h2><%= article.title %></h2>
-      <p><%= article.content %></p>
-    </li>
-  <% end %>
-</ul>
-    </div>
-  </div>
-</div>
+    <%# <li>
+      <h2><%= article.title %>
+      <%# <p><%= article.content %>
+    <%# </li> %>
+  <%# <% end %> 
+<%# </ul> %>
+    <%# </div> %>
+  <%# </div> %> 
+<%# </div> %> 
 
-<div class="container">
+<%# <div class="container">
 <div class="row">
 <div class="col-12 col-lg-8">
 
-</div>
+</div> %>
 
-<div class="col-12 col-lg-4">
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="doctor-card doctor-card-infos">
+<%# <h1>Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %>
+        <h1>Doctor's Page</h1>
 
-</div>
-</div>
+        <% if @doctor.avatar.attached? %>
+  <%# <%= cl_image_tag @doctor.avatar.key, height: 40, width: 40, crop: :fill %> 
+        <%= image_tag "https://images.pexels.com/photos/1573010/pexels-photo-1573010.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", class: "doctors_image" %>
+        <% end %>
+<%# <p><%= @rating %>
+        <p>My name is Jeannie Meyers and I am a licensed clinical social worker. I have experience in counseling, case management, and worked with a variety of populations. I have 9 years’ experience working in the mental health field. I treated clients with depression, anxiety, bipolar disorder, relationship issues, stress management, and life transitions. 
+        </p>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <div class="Calendar-card">
+      </div>       
+    </div>
+  </div>
 </div>
