@@ -18,7 +18,8 @@ const addCheckBoxesToForm = (appointments, date) => {
     const label = `<label for="${idForRadio}">${slot}</label><br>`;
     const radio = `<input type="radio" id="${idForRadio}" \
                     class="radio-new-appointment-form" \
-                    name="slot" value="${date} ${appointment}">`;
+                    name="slot" value="${date} ${appointment}" \
+                    style="margin-right: 4px;">`;
 
     radiosDiv.insertAdjacentHTML('beforeend', radio);
     radiosDiv.insertAdjacentHTML('beforeend', label);
