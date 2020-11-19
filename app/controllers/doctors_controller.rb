@@ -1,14 +1,14 @@
+require 'json'
+
 class DoctorsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @doctors = []
-
-    Doctor.all.each do |doctor|
-      @doctors << {
+    @doctors = Doctor.all.map do |doctor|
+      {
         doctor: doctor,
         specializations: JSON.parse(doctor.specializations),
-        rating: average_rating(doctor.reviews)
+        rating: doctor.average_rating
       }
     end
   end
@@ -18,14 +18,8 @@ class DoctorsController < ApplicationController
     @reviews = @doctor.reviews
     @articles = @doctor.articles
     @specializations = JSON.parse(@doctor.specializations)
-    @rating = average_rating(@reviews)
-  end
-
-  private
-
-  def average_rating(reviews)
-    rating = 0.0
-    reviews.each { |review| rating += review.rating }
-    reviews.empty? ? 0 : (rating / reviews.size).round(1)
+    @rating = @doctor.average_rating
+    @appointment = Appointment.new
+    @appointments_white_list = @doctor.free_appointments
   end
 end

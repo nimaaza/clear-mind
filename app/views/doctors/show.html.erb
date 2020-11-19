@@ -44,6 +44,7 @@
     <div class="article-card-infos">
 <ul>
   <% @articles.each do |article| %>
+
     <%# <li>
       <h2><%= article.title %>
       <%# <p><%= article.content %>
@@ -53,6 +54,7 @@
     <%# </div> %>
   <%# </div> %> 
 <%# </div> %> 
+
 
 <%# <div class="container">
 <div class="row">
@@ -83,3 +85,13 @@
     </div>
   </div>
 </div>
+
+</div>
+</div>
+</div>
+
+<%= render 'shared/flatpickr',
+  appointments_white_list: @appointments_white_list,
+  doctor: @doctor,
+  appointment: @appointment %>
+
