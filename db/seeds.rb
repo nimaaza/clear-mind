@@ -8,11 +8,11 @@
 
 puts 'cleaning the database...'
 
+Appointment.destroy_all
 Review.destroy_all
 Article.destroy_all
 Doctor.destroy_all
 User.destroy_all
-Appointment.destroy_all
 
 print 'creating users (takes time)'
 
