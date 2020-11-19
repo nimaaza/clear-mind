@@ -62,4 +62,24 @@ export default class extends Flatpickr {
       $('#selectTimeSlotCenteredModal').modal('show');
     }
   }
+
+  monthChange(date) {
+    // const f = document.querySelectorAll('.flatpickr-day');
+    // const as = Array.from(f);
+    // const b = as.filter(a => Array.from(a.classList).toString() === ['flatpickr-day'].toString());
+
+    // console.log(b);
+    // console.log(date)
+  }
+
+  dayCreate(dObj, dStr, fp, dayElem) {
+    const dateAsKey = dayElem.dateObj.toLocaleDateString('en-GB');
+    const freeAppointmentsJSON = getAppointmentsJSON();
+    const appointmentsOfDay = freeAppointmentsJSON[dateAsKey];
+
+    if (appointmentsOfDay) {
+      dayElem.style.backgroundColor = 'blue';
+      dayElem.style.color = 'white';
+    }
+  }
 }
