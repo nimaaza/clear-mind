@@ -8,6 +8,10 @@
 
   <div class="container">
     <div class="doctor-card-index">
+
+      <%= link_to doctor_path(doctor), class: 'doctor-card-index-link' do %>
+        <!-- <span></span> -->
+      <% end %>
       <div class="doctor-card-avatar-rating-index">
         <% if doctor.avatar.attached? %>
           <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
