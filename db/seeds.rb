@@ -12,7 +12,7 @@ Review.destroy_all
 Article.destroy_all
 Doctor.destroy_all
 User.destroy_all
-# Appointment.destroy_all
+Appointment.destroy_all
 
 print 'creating users (takes time)'
 
@@ -132,6 +132,32 @@ Doctor.all.each do |doctor|
 
     print '.'
   end
+end
+
+print 'creating some appointments for today'
+
+seconds_in_hour = 60 * 60
+now = Time.now
+start_time = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
+
+8.times do
+  appointment = Appointment.new(
+    user: User.first,
+    doctor: Doctor.first,
+    status: false,
+    meeting_link: 'zoom',
+    appointment_start: start_time,
+    appointment_end: start_time + seconds_in_hour
+  )
+
+  appointment.save!
+  start_time += seconds_in_hour
+
+  if start_time.hour > 18
+    start_time = Time.new(start_time.year, start_time.month, start_time.day + 1, 9, 0, 0)
+  end
+
+  print '.'
 end
 
 puts ''
