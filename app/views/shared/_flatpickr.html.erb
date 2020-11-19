@@ -1,7 +1,7 @@
 <input id="input-white-list-json" type="hidden" value=<%= appointments_white_list %>>
 
 <%= form_with authenticity_token: true do |f| %>
-  <%= f.text_field :start_time, id: "input-meeting-date",
+  <%= f.text_field :start_time, id: "input-meeting-date", style: "display: none;",
     data: {
       controller: "flatpickr",
       flatpickr_date_format: "Y-m-d",

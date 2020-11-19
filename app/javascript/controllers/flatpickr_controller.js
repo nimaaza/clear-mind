@@ -2,7 +2,7 @@
 import Flatpickr from 'stimulus-flatpickr'
 
 // import a theme (could be in your main CSS entry too...)
-import 'flatpickr/dist/themes/light.css'
+import 'flatpickr/dist/themes/dark.css'
 
 const getAppointmentsJSON = () => {
   return JSON.parse(document.getElementById('input-white-list-json').value);
