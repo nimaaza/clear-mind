@@ -16,7 +16,7 @@
         <% if doctor.avatar.attached? %>
           <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
         <% end %>
-        <h3><%= rating %></h3>
+        <h4><%= "#{'😇' * rating}#{rating.to_i == rating ? '' : '😌'}" %></h4>
         <%= link_to "Check Availability", doctor_path(doctor), class: "btn btn-flat" %>
       </div>
       <div class="doctor-card-infos-index">

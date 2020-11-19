@@ -1,4 +1,8 @@
-//design for doctor show page
+//design for doctor index page
+body {
+  background-color: #00b0c9;
+}
+
 .doctor-card-index {
     overflow: hidden;
     height: 400px;
@@ -9,6 +13,7 @@
     margin: 20px;
     padding: 40px;
     position: relative;
+    border-radius: 8px;
 
     h2 {
       font-size: 24px;
@@ -20,6 +25,11 @@
       font-size: 20px;
       font-weight: bold;
       margin: 0;
+    }
+
+    h4 {
+      letter-spacing: 4px;
+      font-size: 30px;
     }
 
     p, li {
