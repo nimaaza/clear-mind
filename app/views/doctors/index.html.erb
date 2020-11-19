@@ -1,25 +1,42 @@
 <h1>List of available specialists</h1>
 
-<ul>
-  <% @doctors.each do |doctor_hash| %>
-    <% doctor = doctor_hash[:doctor] %>
-    <% specializations = doctor_hash[:specializations] %>
-    <% rating = doctor_hash[:rating] %>
 
-    <% if doctor.avatar.attached? %>
-      <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
-    <% end %>
+<% @doctors.each do |doctor_hash| %>
+  <% doctor = doctor_hash[:doctor] %>
+  <% specializations = doctor_hash[:specializations] %>
+  <% rating = doctor_hash[:rating] %>
 
-    <li>
-      <p><%= "#{doctor.first_name} #{doctor.last_name}" %></p>
-      <p><%= rating %></p>
-      <p><%= doctor.about %></p>
-
-      <ul>
-        <% specializations.each do |specialization| %>
-            <li><%= specialization %></li>
+  <div class="container">
+    <div class="doctor-card-index">
+      <div class="doctor-card-avatar-rating-index">
+        <% if doctor.avatar.attached? %>
+          <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
         <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+        <h3><%= rating %></h3>
+        <%= link_to "Check Availability", doctor_path(doctor), class: "btn btn-flat" %>
+      </div>
+      <div class="doctor-card-infos-index">
+        <h2>About Dr. <%= "#{doctor.first_name} #{doctor.last_name}" %></h2>
+        <p><%= doctor.about %></p>
+        <h3 class="mt-4">Specializations:</h3>
+        <ul>
+          <% specializations.each do |specialization| %>
+            <li><%= specialization %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
