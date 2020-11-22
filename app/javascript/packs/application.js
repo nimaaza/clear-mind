@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("@opentok/client")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -21,15 +22,17 @@ require("channels")
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
-require("template/custom.js")
+// require("template/custom.js")
 // External imports
 import "bootstrap";
 import "controllers";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initOpenTok } from '../controllers/opentok';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initOpenTok();
 });
