@@ -65,5 +65,4 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'devise'
 gem 'faker'
 gem 'figaro'
-gem 'gon'
 gem 'opentok', "~> 4.0.0"
