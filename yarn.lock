@@ -846,6 +846,11 @@
   dependencies:
     mkdirp "^1.0.4"
 
+"@opentok/client@^2.18.2":
+  version "2.18.2"
+  resolved "https://registry.yarnpkg.com/@opentok/client/-/client-2.18.2.tgz#6eb4b21e7116ea6f15a41b4d1015a8e376a7e8c5"
+  integrity sha512-8B+sABOgZHJZQbwpvIAsQGxCoka6AjW3CO/ir8SEji5j9YfmkqBAFd/oV+H6BETxS1zu2mF4QyzYrKtNNWETKg==
+
 "@rails/actioncable@^6.0.0":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
