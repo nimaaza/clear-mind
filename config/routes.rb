@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :doctors, only: [:index, :show] do
     resources :appointments, only: :create
-    resources :reviews, only: :create
+    resources :reviews, only: [:update, :create]
   end
 
   get '/dashboard', to: 'appointments#dashboard'

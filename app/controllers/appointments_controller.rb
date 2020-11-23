@@ -19,4 +19,19 @@ class AppointmentsController < ApplicationController
       #
     end
   end
+
+  def dashboard
+    now = Time.now
+    this_hour = Time.new(now.year, now.month, now.day, now.hour)
+
+    @appointment = User.current_appointment(current_user)
+
+    unless @appointment.nil?
+      doctor = @appointment.doctor
+      @doctor_full_name = "#{doctor.first_name.capitalize} #{doctor.last_name.capitalize}"
+    end
+
+    @past_appointments = current_user.appointments.where('appointment_start < ?', this_hour)
+    @reviews = current_user.reviews
+  end
 end
