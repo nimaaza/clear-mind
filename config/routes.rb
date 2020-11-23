@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :reviews, only: :create
   end
 
-  get '/my_appointments', to: 'appointments#my_appointments'
+  get '/dashboard', to: 'appointments#dashboard'
   get '/meet', to: 'meetings#meet'
 end
