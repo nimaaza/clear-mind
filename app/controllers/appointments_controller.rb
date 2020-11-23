@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     appointment.appointment_end = Time.new(year, month, day, hour.to_i + 1)
 
     if appointment.save
-      #
+      redirect_to dashboard_path
     else
       #
     end
