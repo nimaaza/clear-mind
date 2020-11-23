@@ -2,7 +2,7 @@ require 'opentok'
 
 class MeetingsController < ApplicationController
   def meet
-    appointment = User.current_appointment(current_user)
+    appointment = current_user.current_appointment
 
     if appointment.nil?
       #
