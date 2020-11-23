@@ -1,40 +1,4 @@
 
-
-<%# <p><%= @doctor.about %>
-<%# <ul> %>
-  <%# <% @specializations.each do |specialization| %>
-      <%# <li><%= specialization %>
-  <%# <% end %>
-<%# </ul> %>
-<%# <%= link_to "Check Availability", "#", class: "btn btn-flat" %>
-  <div class= "d-flex justify-content-between">
-
-  </div>
-    </div>
-  </div>
-</div>
-
-<%# <div class="container-two">
-  <div class="review-card">
-    <div class="review-card-infos">
-<ul>
-  <% @reviews.each do |review| %>
-    <%# <li>
-      <% if review.user.avatar.attached? %>
-        <%# <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %>
-      <%# <% end %>
-
-      <%# <p><%= review.rating %>
-      <%# <p><%= review.date %>
-      <%# <p><%= review.content %>
-    <%# </li> %>
-  <%# <% end %>
-<%# </ul> %>
-    <%# </div> %>
-  <%# </div> %>
-<%# </div> %>
-
-
 <%# <div class="container-three">
   <div class="article-card">
     <div class="article-card-infos">
@@ -89,8 +53,24 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="review-wrapper"> 
+      <h1 class= "text-center"><%= @doctor.first_name %>'s Reviews</h1>
+        
+          <% @reviews.each do |review| %>
+            <div class="review-card">
+              <div class="review-info">
+                <% if review.user.avatar.attached? %>
+                <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %>
+                <% end %>
+                <p><%= review.user.first_name %></p>
+                <p>Rating: <%= review.rating %></p>
+                <p><%= review.date %></p>
+              </div>
+              
+              <p><%= review.content %></p>
+            </div>
+          <% end %>
+  </div>
 </div>
-</div>
-</div>
-
 

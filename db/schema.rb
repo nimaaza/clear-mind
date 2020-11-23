@@ -98,23 +98,10 @@ ActiveRecord::Schema.define(version: 2020_11_18_092649) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "vacancies", force: :cascade do |t|
-    t.date "start"
-    t.date "end"
-    t.bigint "doctor_id", null: false
-    t.bigint "appointment_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["appointment_id"], name: "index_vacancies_on_appointment_id"
-    t.index ["doctor_id"], name: "index_vacancies_on_doctor_id"
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "users"
   add_foreign_key "articles", "doctors"
   add_foreign_key "reviews", "doctors"
   add_foreign_key "reviews", "users"
-  add_foreign_key "vacancies", "appointments"
-  add_foreign_key "vacancies", "doctors"
 end
