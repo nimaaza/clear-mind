@@ -11,12 +11,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def self.current_appointment(user)
-    # now = Time.now
-    # start = Time.new(now.year, now.month, now.day, now.hour, 0, 0)
-    # next_hour = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
-    # user.appointments.find_by('appointment_start = ? and appointment_end = ?', start, next_hour)
+  def appointments
+    doctor? ? doctor.appointments : super
+  end
 
-    Appointment.first
+  def current_appointment
+    now = Time.now
+    start = Time.new(now.year, now.month, now.day, now.hour, 0, 0)
+    next_hour = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
+    appointments.find_by('appointment_start = ? and appointment_end = ?', start, next_hour)
+
+    # Appointment.first
+  end
+
+  def doctor?
+    doctor.present?
+  end
+
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 end

@@ -5,7 +5,7 @@ class Doctor < ApplicationRecord
   has_many :reviews
   has_many :appointments
   has_many :articles
-
+  belongs_to :user
   has_one_attached :avatar
 
   def average_rating
@@ -19,6 +19,10 @@ class Doctor < ApplicationRecord
                                .where('appointment_start > ?', Time.now)
                                .order(appointment_start: :asc)
     make_white_list(forthcoming_appointments).to_json
+  end
+
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   private

@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_081157) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "about"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -95,8 +97,6 @@ ActiveRecord::Schema.define(version: 2020_11_23_081157) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.bigint "doctor_id"
-    t.index ["doctor_id"], name: "index_users_on_doctor_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
