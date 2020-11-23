@@ -4,7 +4,7 @@
   <h1>Hello <%= current_user.full_name %></h1>
 <% end %>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs" id="dashboard-tab-items" role="tablist">
   <% if current_user.doctor? %>
     <!-- tabs for doctor users -->
     <% unless @appointment.nil? %>
@@ -51,7 +51,7 @@
   <% end %>
 </ul>
 
-<div class="tab-content" id="myTabContent">
+<div class="tab-content" id="dashboard-tab-content">
   <% if current_user.doctor? %>
     <!-- doctors' contents -->
     <% unless @appointment.nil? %>
@@ -142,3 +142,4 @@
     </div>
   <% end %>
  </div>
+

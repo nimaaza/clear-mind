@@ -1,0 +1,28 @@
+#dashboard-tab-items {
+  margin: auto 80px;
+}
+
+#dashboard-tab-content {
+  margin: auto 80px;
+  padding: 40px;
+  height: 100vh;
+}
+
+.nav-item {
+  margin: 0 0 0 16px;
+
+  .nav-link {
+    color: darkgray;
+  }
+
+  .nav-link.active {
+    color: black;
+    background-color: white;
+  }
+
+  a {
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+  }
+}
+
