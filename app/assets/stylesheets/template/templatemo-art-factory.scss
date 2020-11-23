@@ -143,16 +143,6 @@ hgroup {
   box-sizing: border-box;
 }
 
-html,
-body {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  background-color: #fff;
-  font-size: 16px;
-  -ms-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 a {
   text-decoration: none !important;
@@ -183,11 +173,7 @@ p {
 global styles
 --------------------------------------------- 
 */
-html,
-body {
-  background: #fff;
-  font-family: "Roboto", sans-serif;
-}
+
 
 ::selection {
   background: #ff589e;
@@ -200,10 +186,7 @@ body {
 }
 
 @media (max-width: 991px) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
+ 
   .mobile-top-fix {
     margin-top: 30px;
     margin-bottom: 0px;
