@@ -30,8 +30,18 @@
   <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="profile-tab">
     <ul>
       <% @past_appointments.each do |appointment| %>
+        <% doctor = appointment.doctor %>
         <li>
-          appointment
+          <% if doctor.avatar.attached? %>
+            <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+          <% end %>
+          <p><%= "#{doctor.first_name.capitalize} #{doctor.last_name.capitalize}" %></p>
+          <p><%= appointment.appointment_start.getlocal %></p>
+          <p>How happy are others: <%= render 'shared/rating', rating: doctor.average_rating %></p>
+          <% review = doctor.reviews.find_by(user: current_user) %>
+          <% if review %>
+            <p>How happy are you: <%= render 'shared/rating', rating: review.rating %></p>
+          <% end %>
         </li>
       <% end %>
     </ul>
@@ -41,7 +51,11 @@
     <ul>
       <% @reviews.each do |review| %>
         <li>
-          review
+          <p><%= review.date %></p>
+          <p><%= "#{review.doctor.first_name.capitalize} #{review.doctor.last_name.capitalize}" %></p>
+          <p><%= review.content %></p>
+          <%= render 'shared/rating', rating: review.rating %>
+          <%= link_to 'Edit', doctor_review_path(review.doctor, review), method: 'patch' %>
         </li>
       <% end %>
     </ul>
