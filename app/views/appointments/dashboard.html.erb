@@ -16,7 +16,11 @@
     <% end %>
 
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="future-appointments-tab" data-toggle="tab" href="#future-appointments" role="tab" aria-controls="profile" aria-selected="false">
+      <% unless @appointment.nil? %>
+        <a class="nav-link" id="future-appointments-tab" data-toggle="tab" href="#future-appointments" role="tab" aria-controls="profile" aria-selected="false">
+      <% else %>
+        <a class="nav-link active" id="future-appointments-tab" data-toggle="tab" href="#future-appointments" role="tab" aria-controls="profile" aria-selected="true">
+      <% end %>
         My Upcoming Appointments
       </a>
     </li>
@@ -32,7 +36,11 @@
     <% end %>
 
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="profile" aria-selected="false">
+      <% unless @appointment.nil? %>
+        <a class="nav-link" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="profile" aria-selected="false">
+      <% else %>
+        <a class="nav-link active" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="profile" aria-selected="true">
+      <% end %>
         My Past Appointments
       </a>
     </li>
@@ -62,7 +70,11 @@
       </div>
     <% end %>
 
-    <div class="tab-pane fade" id="future-appointments" role="tabpanel" aria-labelledby="profile-tab">
+    <% unless @appointment.nil? %>
+      <div class="tab-pane fade" id="future-appointments" role="tabpanel" aria-labelledby="profile-tab">
+    <% else %>
+      <div class="tab-pane fade show active" id="future-appointments" role="tabpanel" aria-labelledby="profile-tab">
+    <% end %>
       <ul>
         <% @future_appointments.each do |appointment| %>
           <% user = appointment.user %>
@@ -88,7 +100,11 @@
       </div>
     <% end %>
 
-    <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="profile-tab">
+    <% unless @appointment.nil? %>
+      <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="profile-tab">
+    <% else %>
+      <div class="tab-pane fade show active" id="past-appointments" role="tabpanel" aria-labelledby="profile-tab">
+    <% end %>
       <ul>
         <% @past_appointments.each do |appointment| %>
           <% doctor = appointment.doctor %>
