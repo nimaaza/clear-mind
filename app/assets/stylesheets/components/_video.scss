@@ -1,0 +1,23 @@
+#videos {
+  position: relative;
+  box-sizing: content-box;
+}
+
+#subscriber {
+  position: absolute;
+
+  div {
+    width: 80vw !important;
+    height: 80vh !important;
+  }
+}
+
+#publisher {
+  position: absolute;
+  z-index: 10;
+
+  div {
+    width: 10vw !important;
+    height: 10vh !important;
+  }
+}
