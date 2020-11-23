@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
 
   get '/my_appointments', to: 'appointments#my_appointments'
+  get '/meet', to: 'meetings#meet'
 end
