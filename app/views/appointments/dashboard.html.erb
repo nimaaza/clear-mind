@@ -1,63 +1,144 @@
+<% if current_user.doctor? %>
+  <h1>Hello Doctor <%= current_user.doctor.full_name %>!</h1>
+<% else %>
+  <h1>Hello <%= current_user.full_name %></h1>
+<% end %>
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <% unless @appointment.nil? %>
+  <% if current_user.doctor? %>
+    <!-- tabs for doctor users -->
+    <% unless @appointment.nil? %>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="current-appointment-tab" data-toggle="tab" href="#current-appointment" role="tab" aria-controls="home" aria-selected="true">
+          Now: Appointment with <%= @appointment.user.full_name %>
+        </a>
+      </li>
+    <% end %>
+
     <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#current-appointment" role="tab" aria-controls="home" aria-selected="true">
-        Now: Appointment with Doctor <%= @doctor_full_name %>
+      <a class="nav-link" id="future-appointments-tab" data-toggle="tab" href="#future-appointments" role="tab" aria-controls="profile" aria-selected="false">
+        My Upcoming Appointments
+      </a>
+    </li>
+
+  <% else %>
+    <!-- tabs for client users -->
+    <% unless @appointment.nil? %>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="current-appointment-tab" data-toggle="tab" href="#current-appointment" role="tab" aria-controls="home" aria-selected="true">
+          Now: Appointment with Doctor <%= @doctor_full_name %>
+        </a>
+      </li>
+    <% end %>
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="profile" aria-selected="false">
+        My Past Appointments
+      </a>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="future-appointments-tab" data-toggle="tab" href="#future-appointments" role="tab" aria-controls="profile" aria-selected="false">
+        My Future Appointments
+      </a>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="contact" aria-selected="false">
+        My Reviews
       </a>
     </li>
   <% end %>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="profile" aria-selected="false">
-      My Past Appointments
-    </a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="contact" aria-selected="false">
-      My Reviews
-    </a>
-  </li>
 </ul>
 
 <div class="tab-content" id="myTabContent">
-  <% unless @appointment.nil? %>
-    <div class="tab-pane fade show active" id="current-appointment" role="tabpanel" aria-labelledby="home-tab">
-      <h1>Yay! You've got an appointment with Dr. <%= @doctor_full_name %> right now!</h1>
-      <br>
-      Join the meeting <%= link_to 'here', meet_path %>
+  <% if current_user.doctor? %>
+    <!-- doctors' contents -->
+    <% unless @appointment.nil? %>
+      <div class="tab-pane fade show active" id="current-appointment" role="tabpanel" aria-labelledby="home-tab">
+        <h1>Your appointment with <%= @appointment.user.full_name %> is open right now.</h1>
+        <br>
+        <p>Join the meeting <%= link_to 'here.', meet_path %></p>
+      </div>
+    <% end %>
+
+    <div class="tab-pane fade" id="future-appointments" role="tabpanel" aria-labelledby="profile-tab">
+      <ul>
+        <% @future_appointments.each do |appointment| %>
+          <% user = appointment.user %>
+          <li>
+            <% if user.avatar.attached? %>
+              <%= cl_image_tag user.avatar.key, height: 40, width: 40, crop: :fill %>
+            <% end %>
+            <p><%= user.full_name %></p>
+            <p><%= appointment.appointment_start.getlocal %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% else %>
+    <!-- users' content -->
+    <% unless @appointment.nil? %>
+      <div class="tab-pane fade show active" id="current-appointment" role="tabpanel" aria-labelledby="home-tab">
+        <h1>Yay! Your appointment with Dr. <%= @appointment.doctor.full_name %> is open right now!</h1>
+        <br>
+        <p>Join the meeting <%= link_to 'here.', meet_path %></p>
+        <p>Please come back 'here' to post a review once the meeting is over.</p>
+      </div>
+    <% end %>
+
+    <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="profile-tab">
+      <ul>
+        <% @past_appointments.each do |appointment| %>
+          <% doctor = appointment.doctor %>
+          <li>
+            <% if doctor.avatar.attached? %>
+              <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+            <% end %>
+            <p><%= doctor.full_name %></p>
+            <p><%= appointment.appointment_start.getlocal %></p>
+            <p>How happy are others: <%= render 'shared/rating', rating: doctor.average_rating %></p>
+            <% review = doctor.reviews.find_by(user: current_user) %>
+            <% if review %>
+              <p>How happy are you: <%= render 'shared/rating', rating: review.rating %></p>
+              <%= link_to 'Edit', doctor_review_path(review.doctor, review), method: 'patch' %>
+            <% else %>
+              <%= link_to 'Review', '#' %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="tab-pane fade" id="future-appointments" role="tabpanel" aria-labelledby="profile-tab">
+      <ul>
+        <% @future_appointments.each do |appointment| %>
+          <% doctor = appointment.doctor %>
+          <li>
+            <% if doctor.avatar.attached? %>
+              <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+            <% end %>
+            <p><%= doctor.full_name %></p>
+            <p><%= appointment.appointment_start.getlocal %></p>
+            <p>How happy are others: <%= render 'shared/rating', rating: doctor.average_rating %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="contact-tab">
+      <ul>
+        <% @reviews.each do |review| %>
+          <li>
+            <p><%= review.date %></p>
+            <p><%= review.doctor.full_name %></p>
+            <p><%= review.content %></p>
+            <%= render 'shared/rating', rating: review.rating %>
+            <%= link_to 'Edit', doctor_review_path(review.doctor, review), method: 'patch' %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-
-  <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="profile-tab">
-    <ul>
-      <% @past_appointments.each do |appointment| %>
-        <% doctor = appointment.doctor %>
-        <li>
-          <% if doctor.avatar.attached? %>
-            <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
-          <% end %>
-          <p><%= "#{doctor.first_name.capitalize} #{doctor.last_name.capitalize}" %></p>
-          <p><%= appointment.appointment_start.getlocal %></p>
-          <p>How happy are others: <%= render 'shared/rating', rating: doctor.average_rating %></p>
-          <% review = doctor.reviews.find_by(user: current_user) %>
-          <% if review %>
-            <p>How happy are you: <%= render 'shared/rating', rating: review.rating %></p>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="contact-tab">
-    <ul>
-      <% @reviews.each do |review| %>
-        <li>
-          <p><%= review.date %></p>
-          <p><%= "#{review.doctor.first_name.capitalize} #{review.doctor.last_name.capitalize}" %></p>
-          <p><%= review.content %></p>
-          <%= render 'shared/rating', rating: review.rating %>
-          <%= link_to 'Edit', doctor_review_path(review.doctor, review), method: 'patch' %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+ </div>
