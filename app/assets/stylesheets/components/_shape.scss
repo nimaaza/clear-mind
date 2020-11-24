@@ -1,0 +1,14 @@
+.shape:not([class*="shape-blur"]) {
+  overflow: hidden;
+}
+
+.shape-bottom {
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.shape {
+  position: absolute;
+  pointer-events: none;
+}
