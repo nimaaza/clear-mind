@@ -77,13 +77,26 @@ print 'creating doctors (takes a while)'
     specializations << Faker::Lorem.word
   end
 
+  # Create the doctor user -> QUICK Fix to allow the docor to log in
+  doctor_first_name = Faker::Name.first_name
+  doctor_last_name = Faker::Name.last_name
+  doctor_email = Faker::Internet.email
+
+  user_doctor = User.create!(
+    first_name: doctor_first_name,
+    last_name: doctor_last_name,
+    email: doctor_email,
+    password: '123456'
+    )
+
   doctor = Doctor.new(
     specializations: specializations.to_s,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
+    first_name: doctor_first_name,
+    last_name: doctor_last_name,
+    email: doctor_email,
     phone_number: Faker::PhoneNumber.phone_number_with_country_code,
-    about: Faker::Lorem.paragraph(sentence_count: 10)
+    about: Faker::Lorem.paragraph(sentence_count: 10),
+    user: user_doctor
   )
 
   doctor.avatar.attach(

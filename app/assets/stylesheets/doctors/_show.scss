@@ -1,4 +1,19 @@
 // Specific CSS for your home-page
+.radius-8{
+  border-radius: 8px;
+}
+
+.no-border{
+  border: 0px solid transparent !important;
+}
+
+.text-green{
+  color: #1d7156 !important;
+}
+
+.border-radius-8{
+  border-radius: 8px !important;
+}
 
 //design for doctor show page
 .doctor-card {
@@ -8,26 +23,25 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     align-items: stretch;
     margin: 20px;
-    padding: 40px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .doctor-card img {
     border-radius: 50%;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     border: white 1px solid;
-    width: 250px !important;
-    height: 250px;
+    width: 100px !important;
+    height: 100px;
     margin: 0 auto;
 }
-  
+
   .doctor-card h2 {
     font-size: 20px;
     font-weight: bold;
     margin: 0;
   }
-  
+
   .doctor-card p {
     font-size: 15px;
     line-height: 1.4;
@@ -35,41 +49,40 @@
     margin-bottom: 0;
     margin-top: 8px;
   }
-  
+
   .doctor-card .doctor-card-infos {
     padding: 16px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .container img {
     width: fit-content;
     margin-left: 300px auto;
-  
+
   }
-  
+
   .container p {
     text-align: left;
-    font-size: 20px;
   }
-  
+
   .m-2 {
     margin: 0rem !important;
   }
-  
+
   .container h1 {
-      text-align: center;
+      // text-align: center;
   }
 
-  .container {
-      display: flex;
-      
-
-  }
+  // .container {
+  //     display: flex;
 
 
+  // }
 
-//button 
+
+
+//button
 .btn-ghost {
     color: #4A4A4A;
     border: 1px solid #4A4A4A;
@@ -79,11 +92,11 @@
     opacity: 0.6;
     transition: opacity 0.3s ease;
   }
-  
+
   .btn-ghost:hover {
     opacity: 1;
   }
-  
+
   .btn-flat {
     color: white;
     padding: 8px 24px;
@@ -91,12 +104,12 @@
     background: #1EDD88;
     transition: background 0.3s ease;
   }
-  
+
   .btn-flat:hover {
     background: #1BCB7F;
     color: white;
   }
-  
+
   .btn-gradient {
     color: white;
     padding: 8px 24px;
@@ -105,14 +118,14 @@
     background: linear-gradient(#167FFB, #0F60C4);
     transition: background 0.3s ease;
     border: 1px solid #0F60C4;
-    
+
   }
-  
+
   .btn-gradient:hover {
     background: linear-gradient(#147EFF, #0F67DA);
     color: white;
   }
-  
+
   //design for review section show page
 .review-wrapper {
   overflow: hidden;
@@ -150,7 +163,7 @@
     padding: 12px;
     margin-bottom: 20px;
   }
-  
+
   .review-info {
     margin-right: 20px;
     width: 150px;
@@ -161,22 +174,22 @@
     display: flex;
     flex-direction: column;
   }
-  
+
   // .container-two img {
   //   width: fit-content;
   //   margin-left: 300px auto;
-  
+
   // }
-  
+
   // .container-two p {
   //   text-align: left;
   //   font-size: 20px;
   // }
-  
+
   // .m-2 {
   //   margin: 0rem !important;
   // }
-  
+
   // .container-two h1 {
   //     text-align: center;
   // }
@@ -197,7 +210,7 @@
     margin: 20px;
     padding: 40px;
   }
-  
+
   .article-card img {
     border-radius: 50%;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -206,13 +219,13 @@
     height: 250px;
     margin: 0 auto;
 }
-  
+
   .article-card h2 {
     font-size: 20px;
     font-weight: bold;
     margin: 0;
   }
-  
+
   .article-card p {
     font-size: 15px;
     line-height: 1.4;
@@ -220,34 +233,34 @@
     margin-bottom: 0;
     margin-top: 8px;
   }
-  
+
   .article-card .article-card-infos {
     padding: 16px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .container-three img {
     width: fit-content;
     margin-left: 300px auto;
-  
+
   }
-  
+
   .container-three p {
     text-align: left;
     font-size: 20px;
   }
-  
+
   .m-2 {
     margin: 0rem !important;
   }
-  
+
   .container-three h1 {
       text-align: center;
   }
 
-  
-   
+
+
     //  background-color: #0093E9;
     //  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 
@@ -261,13 +274,13 @@
       align-items: stretch;
       margin: 20px;
       padding: 40px;
-      
+
     }
 
-    //this is for the list of doctors page 
+    //this is for the list of doctors page
     .doctors_title {
     font-size: 2.5rem;
     color: white;
-    text-align: center;
+    // text-align: center;
     margin-top: 10px;
 }
