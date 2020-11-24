@@ -16,12 +16,12 @@ class User < ApplicationRecord
   end
 
   def current_appointment
-    now = Time.now
-    start = Time.new(now.year, now.month, now.day, now.hour, 0, 0)
-    next_hour = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
-    appointments.find_by('appointment_start = ? and appointment_end = ?', start, next_hour)
+    # now = Time.now
+    # start = Time.new(now.year, now.month, now.day, now.hour, 0, 0)
+    # next_hour = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
+    # appointments.find_by('appointment_start = ? and appointment_end = ?', start, next_hour)
 
-    # Appointment.first
+    Appointment.first
   end
 
   def doctor?
