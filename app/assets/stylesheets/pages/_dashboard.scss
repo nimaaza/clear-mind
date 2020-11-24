@@ -17,12 +17,16 @@
 }
 
 .dashboard-call-to-action {
-  display: flex;
-  justify-content: space-evenly;
   margin: 40px auto;
-  padding: 160px 50px;
-  max-width: 1200px;
-  border-bottom: 1px solid lightgray;
+
+  div {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 40px auto;
+    padding: 160px 50px;
+    max-width: 1200px;
+    border-bottom: 1px solid lightgray;
+  }
 
   img {
     height: 240px;
@@ -36,6 +40,10 @@
     font-size: 24px;
     margin: auto;
     padding: 24px;
+  }
+
+  h1, h2, p {
+    text-align: center;
   }
 }
 

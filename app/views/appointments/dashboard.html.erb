@@ -1,7 +1,7 @@
 <% if current_user.doctor? %>
-  <h1>Hello Doctor <%= current_user.doctor.full_name %>!</h1>
+  <h1 style="text-align: center;">Hello, Dr. <%= current_user.doctor.full_name %>!</h1>
 <% else %>
-  <h1>Hello <%= current_user.full_name %></h1>
+  <h1 style="text-align: center;">Hello, <%= current_user.full_name %>!</h1>
 <% end %>
 
 <ul class="nav nav-tabs" id="dashboard-tab-items" role="tablist">
@@ -63,11 +63,9 @@
   <% if current_user.doctor? %>
     <!-- doctors' contents -->
     <% unless @appointment.nil? %>
-      <div class="tab-pane fade show active" id="current-appointment" role="tabpanel" aria-labelledby="home-tab">
-        <h1>Your appointment with <%= @appointment.user.full_name %> is open right now.</h1>
-        <br>
-        <p>Join the meeting <%= link_to 'here.', meet_path %></p>
-      </div>
+      <%= render 'shared/dashboard_appointment',
+        head_line: "Your appointment with #{@appointment.user.full_name} is open right now.",
+        appointment: @appointment %>
     <% end %>
 
     <% unless @appointment.nil? %>
@@ -95,25 +93,9 @@
   <% else %>
     <!-- users' content -->
     <% unless @appointment.nil? %>
-      <div class="tab-pane fade show active" id="current-appointment" role="tabpanel" aria-labelledby="home-tab">
-        <h1>Yay! Your appointment with Dr. <%= @appointment.doctor.full_name %> is open right now!</h1>
-
-        <div class="dashboard-call-to-action">
-        <% if @appointment.doctor.avatar.attached? %>
-          <%= cl_image_tag @appointment.doctor.avatar.key, height: 40, width: 40, crop: :fill, class: 'dashboard-big-avatar' %>
-        <% end %>
-
-        <%= link_to meet_path, class: 'btn-flat' do %>
-          <i class="fas fa-people-arrows"></i> Join Meeting
-        <% end %>
-
-        <% if current_user.avatar.attached? %>
-          <%= cl_image_tag current_user.avatar.key, height: 40, width: 40, crop: :fill, class: 'dashboard-big-avatar' %>
-        <% end %>
-        </div>
-        <p>Please come back to post a review once the meeting is over.</p>
-        <p>Good news: you don't need to install any 3rd party application for joining the meeting!</p>
-      </div>
+      <%= render 'shared/dashboard_appointment',
+        head_line: "Yay! Your appointment with Dr. #{@appointment.doctor.full_name} is open right now!",
+        appointment: @appointment %>
     <% end %>
 
     <% unless @appointment.nil? %>
