@@ -67,7 +67,7 @@
 // cards
 .doctor-card-dashboard {
   overflow: hidden;
-  height: 256px;
+  height: 190px;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex !important;
@@ -89,12 +89,12 @@
     margin: 0;
   }
 
-  h4 {
-    letter-spacing: 4px;
-    font-size: 30px;
-  }
+  // h4 {
+  //   letter-spacing: 4px;
+  //   font-size: 30px;
+  // }
 
-  p {
+  .p-date {
     font-size: 20px;
     line-height: 1.4;
     opacity: .7;
@@ -103,6 +103,15 @@
     position: absolute;
     top: 0;
     right: 12px;
+  }
+}
+
+.doctor-card-infos-dashboard {
+  display: flex;
+
+  a {
+    padding: 24px 8px;
+    margin: auto;
   }
 }
 
@@ -119,7 +128,7 @@
     border: white 1px solid;
     width: 80px !important;
     height: 80px;
-    margin: 8px auto;
+    margin: auto;
   }
 }
 

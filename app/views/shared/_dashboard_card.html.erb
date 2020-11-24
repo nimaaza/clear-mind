@@ -8,7 +8,7 @@
       <% date = appointment.appointment_start.getlocal.strftime('%b %d %Y') %>
 
       <div class="doctor-card-dashboard">
-        <p><%= date %></p>
+        <p class="p-date"><%= date %></p>
 
         <div class="doctor-card-avatar-rating-dashboard">
           <% if user.avatar.attached? %>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="doctor-card-infos-dashboard">
-          <h1><%= user.full_name %></h1>
+          <%= user.full_name %>
         </div>
       </div>
     <% end %>
@@ -29,7 +29,7 @@
       <% date = appointment.appointment_start.getlocal.strftime('%b %d %Y') %>
 
       <div class="doctor-card-dashboard">
-        <p><%= date %></p>
+        <p class="p-date"><%= date %></p>
 
         <div class="doctor-card-avatar-rating-dashboard">
           <% if doctor.avatar.attached? %>
@@ -48,7 +48,7 @@
 
         <div class="doctor-card-infos-dashboard">
           <%= link_to doctor_path(doctor) do %>
-            <h1><%= doctor.full_name %></h1>
+            <%= doctor.full_name %>
           <% end %>
         </div>
       </div>
