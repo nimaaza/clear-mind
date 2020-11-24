@@ -254,12 +254,24 @@
     //this is for calndar card
     .Calendar-card {
       overflow: hidden;
-      height: 700px;
       background: white;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: stretch;
       margin: 20px;
+      padding: 40px;
+      
+    }
+
+    .new-card {
+      overflow: hidden;
+      height: 300px;
+      width: 500px;
+      background: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: stretch;
+      margin: 5px;
       padding: 40px;
       
     }
@@ -270,4 +282,8 @@
     color: white;
     text-align: center;
     margin-top: 10px;
+}
+
+body {
+  margin-top: 40px;
 }
