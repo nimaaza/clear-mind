@@ -32,7 +32,7 @@
 
     <li class="nav-item" role="presentation">
       <a class="<%= second_tab_link_class %>" id="future-appointments-tab" data-toggle="tab" href="#future-appointments" role="tab" aria-controls="profile" aria-selected="<%= @appointment.nil? %>">
-        My Upcoming Appointments
+        My Future Appointments
       </a>
     </li>
   <% else %>
@@ -46,7 +46,7 @@
     <% end %>
 
     <li class="nav-item" role="presentation">
-      <a class="<%= second_tab_link_class %>" id="future-appointments-tab" data-toggle="tab" href="#future-appointments" role="tab" aria-controls="profile" aria-selected="<%= @appointment.nil? %>">
+      <a class="<%= second_tab_link_class %>" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="profile" aria-selected="<%= @appointment.nil? %>">
         My Past Appointments
       </a>
     </li>
