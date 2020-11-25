@@ -3,8 +3,6 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.new(
       user: current_user,
       doctor: Doctor.find(params[:doctor_id]),
-      status: false,
-      meeting_link: 'zoom'
     )
 
     date, hour = params[:slot].split(' ')
