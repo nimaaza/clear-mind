@@ -12,20 +12,23 @@ const addCheckBoxesToForm = (appointments, date) => {
   const radiosDiv = document.querySelector('#new_appointment div');
   radiosDiv.innerHTML = '';
 
+
   appointments.forEach((appointment) => {
-    const slot = `${appointment}:00 to ${appointment + 1}:00`;
+    const slot = `${appointment}:00 - ${appointment + 1}:00`;
+
     const idForRadio = appointment;
-    const label = `<label for="${idForRadio}">${slot}</label><br>`;
-    const radio = `<input type="radio" id="${idForRadio}" \
+    // const label = `<label for="${idForRadio}">${slot}</label><br>`;
+    const radio = ` <div class='d-flex align-items-center flex-column text-blueish'>
+                    <input type="radio" id="${idForRadio}" \
                     class="radio-new-appointment-form" \
                     name="slot" value="${date} ${appointment}" \
-                    style="margin-right: 4px;">`;
+                    style="margin-right: 4px;"><label for="${idForRadio}">${slot}</label></div>`;
 
     radiosDiv.insertAdjacentHTML('beforeend', radio);
-    radiosDiv.insertAdjacentHTML('beforeend', label);
+    // radiosDiv.insertAdjacentHTML('beforeend', label);
   });
 
-  const submit = '<input id="submit-new-appointments-form" \
+  const submit = '<input class="btn btn-action mt-5" id="submit-new-appointments-form" \
                     type="submit" value="Book" disabled>';
   radiosDiv.insertAdjacentHTML('beforeend', submit);
 
@@ -81,9 +84,9 @@ export default class extends Flatpickr {
 
     let color;
 
-    if (!appointmentsOfDay || appointmentsOfDay.length >= 8) color = 'green';
-    else if (appointmentsOfDay && appointmentsOfDay.length > 4) color = 'orange';
-    else color = 'red';
+    if (!appointmentsOfDay || appointmentsOfDay.length >= 8) color = '#17a2b8';
+    else if (appointmentsOfDay && appointmentsOfDay.length > 4) color = '#fd7e14';
+    else color = '#dc3545';
 
     dayElem.style.backgroundColor = color;
     dayElem.style.color = 'white';
