@@ -39,7 +39,13 @@ class Doctor < ApplicationRecord
       white_list[key].delete(start_hour)
     end
 
-    white_list[Time.now.getlocal.strftime('%d/%m/%Y')] = [] if Time.now.getlocal.hour > 18
+    today = Time.now.getlocal.strftime('%d/%m/%Y')
+    this_hour = Time.now.getlocal.hour.to_i
+    if white_list[today].present?
+      (9..this_hour).each do |hour|
+        white_list[today].delete(hour)
+      end
+    end
 
     white_list
   end
