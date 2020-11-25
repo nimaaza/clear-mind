@@ -1,49 +1,45 @@
 
-<%# <div class="container-three">
-  <div class="article-card">
-    <div class="article-card-infos">
-<ul>
-  <% @articles.each do |article| %>
+<div class="banner" style="background-image:linear-gradient(#0a00ff85,rgb(252 252 252 / 40%)), url(https://images.unsplash.com/photo-1580121213375-c0ac4d96b1bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);">
+  <div class="container d-flex">
 
-    <%# <li>
-      <h2><%= article.title %>
-      <%# <p><%= article.content %>
-    <%# </li> %>
-  <%# <% end %>
-<%# </ul> %>
-    <%# </div> %>
-  <%# </div> %>
-<%# </div> %>
+    <% if @doctor.avatar.attached? %>
+      <%= image_tag "https://images.pexels.com/photos/1573010/pexels-photo-1573010.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", class: "doctors_image", class: 'avatar-xl' %>
+    <% end %>
+    <div class='ml-3'>
+      <h1 class="doctors_title">Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %></h1>
+      <p>We have gathered World class specialist to guide you through your journey</p>
+      <h4><%= "#{'😇' * @rating}#{@rating.to_i == @rating ? '' : '😌'}" %></h4>
+
+    </div>
+  </div>
+</div>
+
+<div class="position-relative" style="height: 1vh; width: 300vw; left: -109vw;">
+  <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"></path></svg>
+  </div>
+</div>
 
 
-<%# <div class="container">
-<div class="row">
-<div class="col-12 col-lg-8">
-
-</div> %>
-
-<div class="container">
+<div class="container mt-n10 bg-white border-radius-8">
   <div class="row">
-    <div class="col-12 col-lg-6">
-      <div class="doctor-card doctor-card-infos">
-<%# <h1>Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %>
-        <h1>Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %>'s Page</h1>
+    <div class="col-12 col-lg-8">
+      <div class="doctor-card doctor-card-infos p-4 rounded">
 
-        <% if @doctor.avatar.attached? %>
-  <%# <%= cl_image_tag @doctor.avatar.key, height: 40, width: 40, crop: :fill %>
-        <%= image_tag "https://images.pexels.com/photos/1573010/pexels-photo-1573010.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", class: "doctors_image" %>
-        <% end %>
-<%# <p><%= @rating %>
         <p>My name is Jeannie Meyers and I am a licensed clinical social worker. I have experience in counseling, case management, and worked with a variety of populations. I have 9 years’ experience working in the mental health field. I treated clients with depression, anxiety, bipolar disorder, relationship issues, stress management, and life transitions.
         </p>
 
-        <h4><%= "#{'😇' * @rating}#{@rating.to_i == @rating ? '' : '😌'}" %></h4>
+
 
       </div>
     </div>
 
-    <div class="col-12 col-lg-6">
-      <div class="Calendar-card center-align">
+    <div class="col-12 col-lg-4 border-radius-8">
+      <div class="Calendar-card center-align p-4 border-radius-8 flex-column">
+        <div class="d-flex justify-content-center ml-n5 mb-2">
+          <h4 class="text-blueish mr-2">Book Here</h4>
+          <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fgetdrawings.com%2Fcliparts%2Fadvanced-clipart-13.png&f=1&nofb=1" alt="" class="arrow">
+        </div>
         <%= render 'shared/flatpickr',
           appointments_white_list: @appointments_white_list,
           doctor: @doctor,
@@ -54,23 +50,33 @@
 </div>
 
 <div class="container">
-  <div class="review-wrapper"> 
-      <h1 class= "text-center"><%= @doctor.first_name %>'s Reviews</h1>
-        
-          <% @reviews.each do |review| %>
-            <div class="review-card">
-              <div class="review-info">
-                <% if review.user.avatar.attached? %>
-                <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %>
-                <% end %>
-                <p><%= review.user.first_name %></p>
-                <p>Rating: <%= review.rating %></p>
-                <p><%= review.date %></p>
+  <div class="row">
+    <div class="col-8">
+      <div class="review-wrapper">
+        <h1 class= "border-bottom-blue mb-4"><%= @doctor.first_name %>'s Reviews</h1>
+
+            <% @reviews.each do |review| %>
+              <div class="review-card p-4">
+                <div class="review-info d-flex justify-content-between">
+                  <div class='d-flex'>
+                    <% if review.user.avatar.attached? %>
+                      <%= cl_image_tag review.user.avatar.key, height: 40, width: 40, crop: :fill %>
+                    <% end %>
+                    <div class='ml-3'>
+                      <p class='text-blue text-bold opacity-70' style='font-size: 18px;'><%= review.user.first_name %></p>
+                      <p><%= review.rating %></p>
+                    </div>
+                  </div>
+                  <p class='text-muted'><%= review.date.strftime('%A, %b %d') %></p>
+                </div>
+
+                <p class='mt-3'><%= review.content %></p>
               </div>
-              
-              <p><%= review.content %></p>
-            </div>
-          <% end %>
+            <% end %>
+
+      </div>
+    </div>
+
   </div>
 </div>
 
