@@ -39,12 +39,16 @@ class Doctor < ApplicationRecord
       white_list[key].delete(start_hour)
     end
 
+    # today would require some special treatment to
+    # remove free slots for which the hour has passed
+    # and add free slots for the rest of the day if
+    # there have been no appointments
     today = Time.now.getlocal.strftime('%d/%m/%Y')
     this_hour = Time.now.getlocal.hour.to_i
 
     if white_list[today].present?
       (9..this_hour).each { |hour| white_list[today].delete(hour) }
-    elsif this_hour < 18
+    else
       white_list[today] = (this_hour..18).to_a
     end
 

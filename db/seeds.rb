@@ -25,23 +25,23 @@ User.destroy_all
 print 'creating users (takes time)'
 
 # create one specific user to work with
-nima = User.new(
-  first_name: 'Nima',
-  last_name: 'Az',
-  email: 'nima@gmail.com',
+nada = User.new(
+  first_name: 'Nada',
+  last_name: 'Lakkis',
+  email: 'nada@gmail.com',
   phone_number: Faker::PhoneNumber.phone_number_with_country_code,
   birth_date: Faker::Date.between(from: '1975-01-01', to: '1985-01-01'),
-  gender: 'male',
+  gender: 'female',
   password: '123456',
   password_confirmation: '123456'
 )
 
-nima.avatar.attach(
+nada.avatar.attach(
   io: File.open('app/assets/images/clients/1.png'),
   filename: '1.png', content_type: 'image/png'
 )
 
-nima.save!
+nada.save!
 
 print '.'
 
@@ -96,10 +96,11 @@ print 'creating doctors (takes a while)'
 
 specializations = ['ADHD', 'Addiction', 'Anger Management', 'Anxiety', 'Bipolar Disorder', 'Borderline Disorder', 'Depression', 'Eating Disorders', 'Family Conflict', 'Grief', 'Martial and Premarital', 'Relationship Issues', 'Self-esteem', 'Sex Therapy', 'Stress', 'Trauma and PTSD']
 
-# create one specific doctor to work with
-doctor_first_name = Faker::Name.first_name
-doctor_last_name = Faker::Name.last_name
-doctor_email = 'nimad@gmail.com'
+# create two specific doctors to work with
+# first one - very busy
+doctor_first_name = 'Alex'
+doctor_last_name = 'Swaniawski'
+doctor_email = 'something@gmail.com'
 
 doctor_user = User.new(
   first_name: doctor_first_name,
@@ -114,8 +115,8 @@ doctor_user = User.new(
 
 doctor_user.save!
 
-doctor = Doctor.new(
-  specializations: specializations.sample(rand(1..3)).to_s,
+doctor_alex = Doctor.new(
+  specializations: ['Stress' 'Relationship Issues', 'Grief'].to_s,
   first_name: doctor_first_name,
   last_name: doctor_last_name,
   email: doctor_email,
@@ -124,19 +125,56 @@ doctor = Doctor.new(
   user: doctor_user
 )
 
-doctor.avatar.attach(
+doctor_alex.avatar.attach(
   io: File.open('app/assets/images/therapists/1.jpg'),
   filename: '1.jpg', content_type: 'image/jpg'
 )
 
-doctor.save!
+doctor_alex.save!
+
+print '.'
+
+# second one - very kind :) and has a lot of free time
+doctor_first_name = 'Nima'
+doctor_last_name = 'Az'
+doctor_email = 'nima@gmail.com'
+
+doctor_user = User.new(
+  first_name: doctor_first_name,
+  last_name: doctor_last_name,
+  email: doctor_email,
+  phone_number: Faker::PhoneNumber.phone_number_with_country_code,
+  birth_date: Faker::Date.between(from: '1975-01-01', to: '1985-01-01'),
+  gender: 'male',
+  password: '123456',
+  password_confirmation: '123456'
+)
+
+doctor_user.save!
+
+doctor_nima = Doctor.new(
+  specializations: ['Stress' 'Relationship Issues', 'Grief'].to_s,
+  first_name: doctor_first_name,
+  last_name: doctor_last_name,
+  email: doctor_email,
+  phone_number: Faker::PhoneNumber.phone_number_with_country_code,
+  about: about_texts.shift,
+  user: doctor_user
+)
+
+doctor_nima.avatar.attach(
+  io: File.open('app/assets/images/therapists/2.jpg'),
+  filename: '2.jpg', content_type: 'image/jpg'
+)
+
+doctor_nima.save!
 
 print '.'
 
 # create random doctors
-34.times do |i|
+33.times do |i|
   avatars_asset_path = "app/assets/images/therapists/"
-  file_name = "#{i + 2}.jpg"
+  file_name = "#{i + 3}.jpg"
   avatar_path = "#{avatars_asset_path}#{file_name}"
 
   # Create the doctor user -> QUICK Fix to allow the docor to log in
@@ -190,19 +228,19 @@ print 'creating reviews for doctors (goes fast)'
 
 Doctor.all.each do |doctor|
   rand(5..10).times do
-    review = Review.new(
-      doctor: doctor,
-      user: User.all.sample,
-      rating: rand(1..5),
-      content: reviews.shift,
-      date: Faker::Date.between(from: '2020-9-27', to: '2020-11-24'),
-    )
+    if reviews.count.positive?
+      review = Review.new(
+        doctor: doctor,
+        user: User.all.sample,
+        rating: rand(1..5),
+        content: reviews.shift,
+        date: Faker::Date.between(from: '2020-9-27', to: '2020-11-24'),
+      )
 
-    review.save!
+      review.save!
 
-    print '.'
-
-    return if reviews.count.zero?
+      print '.'
+    end
   end
 end
 
@@ -226,32 +264,30 @@ puts ''
 
 # puts ''
 
-# print 'creating some appointments for today'
+print 'creating some appointments for Dr. Alex Swaniawski'
 
-# seconds_in_hour = 60 * 60
-# now = Time.now
-# start_time = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
+seconds_in_hour = 60 * 60
+now = Time.now
+start_time = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
 
-# 8.times do
-#   appointment = Appointment.new(
-#     user: User.first,
-#     doctor: Doctor.first,
-#     status: false,
-#     meeting_link: 'zoom',
-#     appointment_start: start_time,
-#     appointment_end: start_time + seconds_in_hour
-#   )
+21.times do
+  appointment = Appointment.new(
+    user: User.first,
+    doctor: doctor_alex,
+    appointment_start: start_time,
+    appointment_end: start_time + seconds_in_hour
+  )
 
-#   appointment.save!
-#   start_time += seconds_in_hour
+  appointment.save!
+  start_time += seconds_in_hour
 
-#   if start_time.hour > 18
-#     start_time = Time.new(start_time.year, start_time.month, start_time.day + 1, 9, 0, 0)
-#   end
+  if start_time.hour > 18
+    start_time = Time.new(start_time.year, start_time.month, start_time.day + 1, 9, 0, 0)
+  end
 
-#   print '.'
-# end
+  print '.'
+end
 
-# puts ''
+puts ''
 
 puts "first doctor id: #{Doctor.first.id}"
