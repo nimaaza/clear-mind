@@ -1,18 +1,27 @@
 
-<div class="banner" style="background-image:linear-gradient(#0a00ff85,rgb(252 252 252 / 40%)), url(https://images.unsplash.com/photo-1580121213375-c0ac4d96b1bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);">
+<div class="banner" style="background-image:linear-gradient(160deg, #0093E9 0%, #80D0C7 100%), url(https://images.unsplash.com/photo-1580121213375-c0ac4d96b1bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);">
   <div class="container d-flex">
 
     <% if @doctor.avatar.attached? %>
-      <%= image_tag "https://images.pexels.com/photos/1573010/pexels-photo-1573010.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", class: "doctors_image", class: 'avatar-xl' %>
+      <%= cl_image_tag @doctor.avatar.key, class: "doctors_image avatar-xl" %>
     <% end %>
     <div class='ml-3'>
-      <h1 class="doctors_title">Doctor <%= "#{@doctor.first_name} #{@doctor.last_name}" %></h1>
-      <p>We have gathered World class specialist to guide you through your journey</p>
-      <h4><%= "#{'😇' * @rating}#{@rating.to_i == @rating ? '' : '😌'}" %></h4>
+      <h1 class="doctors_title">Dr. <%= "#{@doctor.first_name} #{@doctor.last_name}" %></h1>
+      <ul class='d-flex mt-3'>
+        <% specializations = JSON.parse(@doctor.specializations) %>
+        <% specializations.each do |specialization| %>
+          <li class='badge badge-tag-soft mr-2'><%= specialization %></li>
+        <% end %>
+      </ul>
+      <%= render 'shared/rating', rating: @doctor.average_rating %>
 
     </div>
   </div>
 </div>
+
+<!-- background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); -->
+
 
 <div class="position-relative" style="height: 1vh; width: 300vw; left: -109vw;">
   <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
@@ -26,7 +35,8 @@
     <div class="col-12 col-lg-8">
       <div class="doctor-card doctor-card-infos p-4 rounded">
 
-        <p>My name is Jeannie Meyers and I am a licensed clinical social worker. I have experience in counseling, case management, and worked with a variety of populations. I have 9 years’ experience working in the mental health field. I treated clients with depression, anxiety, bipolar disorder, relationship issues, stress management, and life transitions.
+        <p>
+          <%= @doctor.about %>
         </p>
 
 
@@ -64,7 +74,8 @@
                     <% end %>
                     <div class='ml-3'>
                       <p class='text-blue text-bold opacity-70' style='font-size: 18px;'><%= review.user.first_name %></p>
-                      <p><%= review.rating %></p>
+                      <%= render 'shared/rating', rating: review.rating %>
+
                     </div>
                   </div>
                   <p class='text-muted'><%= review.date.strftime('%A, %b %d') %></p>
@@ -77,6 +88,28 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div class="modal fade" id="selectTimeSlotCenteredModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-bold text-blueish" id="exampleModalLongTitle">
+         Select Your Preferred Time
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for [@doctor, @appointment] do |f| %>
+          <div class='d-grid grid-calendar p-4'>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 

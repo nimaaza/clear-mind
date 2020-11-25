@@ -5,20 +5,22 @@
 }
 
 #subscriber {
-  position: absolute;
+  // position: absolute;
 
   div {
-    width: 80vw !important;
-    height: 80vh !important;
+    width: 40vw !important;
+    height: 50vh !important;
+    background-color: black;
   }
 }
 
 #publisher {
-  position: absolute;
+  // position: absolute;
   z-index: 10;
 
   div {
-    width: 10vw !important;
-    height: 10vh !important;
+    width: 40vw !important;
+    height: 50vh !important;
+    background-color: purple;
   }
 }

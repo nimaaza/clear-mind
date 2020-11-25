@@ -1,3 +1,8 @@
 <p class="p-rating" style="letter-spacing: 4px; font-size: 20px; margin: 10px auto;">
-  <%= "#{'⭐' * rating}#{rating.to_i == rating ? '' : '🌟'}" %>
+  <%#= "#{'⭐' * rating}#{rating.to_i == rating ? '' : '🌟'}" %>
+  <span class="d-flex">
+    <% rating.to_i.times do %>
+      <i class="fas fa-star" style="color: #6610f2ad;"></i>
+    <% end %>
+  </span>
 </p>
