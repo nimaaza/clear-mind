@@ -1,0 +1,57 @@
+<!-- appointments -->
+<!-- review_allowed -->
+
+<% if current_user.doctor? %>
+  <div class="grid">
+    <% appointments.each do |appointment| %>
+      <% user = appointment.user %>
+      <% date = appointment.appointment_start.getlocal.strftime('%b %d %Y') %>
+
+      <div class="doctor-card-dashboard">
+        <p class="p-date"><%= date %></p>
+
+        <div class="doctor-card-avatar-rating-dashboard">
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, height: 40, width: 40, crop: :fill %>
+          <% end %>
+        </div>
+
+        <div class="doctor-card-infos-dashboard">
+          <%= user.full_name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="grid">
+    <% appointments.each do |appointment| %>
+      <% doctor = appointment.doctor %>
+      <% date = appointment.appointment_start.getlocal.strftime('%b %d %Y') %>
+
+      <div class="doctor-card-dashboard">
+        <p class="p-date"><%= date %></p>
+
+        <div class="doctor-card-avatar-rating-dashboard">
+          <% if doctor.avatar.attached? %>
+            <%= cl_image_tag doctor.avatar.key, height: 40, width: 40, crop: :fill %>
+          <% end %>
+
+          <%= render 'shared/rating', rating: doctor.average_rating %>
+
+          <% review = doctor.reviews.find_by(user: current_user) %>
+          <% if review_allowed && review %>
+            <%= link_to 'Edit', doctor_review_path(review.doctor, review), method: 'patch' %>
+          <% elsif review_allowed %>
+            <%= link_to 'Review', '#', class: 'btn-flat' %>
+          <% end %>
+        </div>
+
+        <div class="doctor-card-infos-dashboard">
+          <%= link_to doctor_path(doctor) do %>
+            <%= doctor.full_name %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
