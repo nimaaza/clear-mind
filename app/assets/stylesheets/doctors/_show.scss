@@ -3,6 +3,12 @@
   border-radius: 8px;
 }
 
+.avatar-xl{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 .no-border{
   border: 0px solid transparent !important;
 }
@@ -15,12 +21,16 @@
   border-radius: 8px !important;
 }
 
+.border-bottom-blue{
+  border-bottom: 1px solid blue;
+}
+
 //design for doctor show page
 .doctor-card {
-    overflow: hidden;
-    height: 700px;
+    // overflow: hidden;
+    // height: 700px;
     background: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     align-items: stretch;
     margin: 20px;
     display: flex;
@@ -43,9 +53,8 @@
   }
 
   .doctor-card p {
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.4;
-    opacity: .7;
     margin-bottom: 0;
     margin-top: 8px;
   }
@@ -57,8 +66,8 @@
   }
 
   .container img {
-    width: fit-content;
-    margin-left: 300px auto;
+    // width: fit-content;
+    // margin-left: 300px auto;
 
   }
 
@@ -130,16 +139,15 @@
 .review-wrapper {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: 20px;
   padding: 40px;
   img {
     border-radius: 50%;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     border: white 1px solid;
-    width: 100px !important;
-    height: 100px;
-    margin: 0 auto;
+    width: 50px !important;
+    height: 50px;
   }
 
   h2 {
@@ -148,25 +156,49 @@
     margin: 0;
   }
   p {
-    font-size: 20px;
-    line-height: 1.4;
-    opacity: .7;
     margin-bottom: 0;
-    margin-top: 8px;
-    text-align: center;
   }
 
 }
+
+.text-bold{
+  font-weight: bold;
+}
+
+.text-blue{
+  color: blue;
+}
+
+.text-blueish{
+  color: #0d3b86;
+}
+
+.opacity-70{
+  opacity: 0.7;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+
+.arrow{
+  width: 45px;
+  margin-top: 20px;
+}
+
+.ml-n5{
+  margin-left: -50px;
+}
+
   .review-card {
-    display: flex;
     align-items: flex-start;
-    padding: 12px;
     margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    border: 1px solid lightgray;
   }
 
   .review-info {
-    margin-right: 20px;
-    width: 150px;
     word-wrap: break-word;
   }
   .review-wrapper .review-card-infos {
@@ -259,6 +291,12 @@
       text-align: center;
   }
 
+  .mt-n10{
+    margin-top: -10vh !important;
+  }
+
+
+
 
 
     //  background-color: #0093E9;
@@ -266,14 +304,16 @@
 
     //this is for calndar card
     .Calendar-card {
-      overflow: hidden;
-      height: 700px;
+      // overflow: hidden;
+      // height: 700px;
+      position: fixed;
+      right: 20vh;
       background: white;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: stretch;
-      margin: 20px;
-      padding: 40px;
+      // margin: 20px;
+      // padding: 40px;
 
     }
 
