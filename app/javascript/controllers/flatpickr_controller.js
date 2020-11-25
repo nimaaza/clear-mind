@@ -64,23 +64,28 @@ export default class extends Flatpickr {
     }
   }
 
-  monthChange(date) {
-    // const f = document.querySelectorAll('.flatpickr-day');
-    // const as = Array.from(f);
-    // const b = as.filter(a => Array.from(a.classList).toString() === ['flatpickr-day'].toString());
-
-    // console.log(b);
-    // console.log(date)
-  }
-
   dayCreate(dObj, dStr, fp, dayElem) {
+    const now = new Date();
+    const today = now.getDate();
+    const thisMonth = now.getMonth();
+
+    const currentCalendarDate = dayElem.dateObj;
+    const calendarDay = currentCalendarDate.getDate();
+    const calendarMonth = currentCalendarDate.getMonth();
+
+    if (calendarMonth != thisMonth || calendarDay < today) return;
+
     const dateAsKey = dayElem.dateObj.toLocaleDateString('en-GB');
     const freeAppointmentsJSON = getAppointmentsJSON();
     const appointmentsOfDay = freeAppointmentsJSON[dateAsKey];
 
-    if (appointmentsOfDay) {
-      dayElem.style.backgroundColor = 'blue';
-      dayElem.style.color = 'white';
-    }
+    let color;
+
+    if (!appointmentsOfDay || appointmentsOfDay.length >= 8) color = 'green';
+    else if (appointmentsOfDay && appointmentsOfDay.length > 4) color = 'orange';
+    else color = 'red';
+
+    dayElem.style.backgroundColor = color;
+    dayElem.style.color = 'white';
   }
 }

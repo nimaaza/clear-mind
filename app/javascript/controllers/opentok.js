@@ -28,9 +28,17 @@ const initializeSession = (apiKey, sessionId, token) => {
 };
 
 const initOpenTok = () => {
-  const openTokApiData = document.getElementById('opentok-api-data').dataset;
-  if (openTokApiData)
-    initializeSession(openTokApiData.apiKey, openTokApiData.sessionId, openTokApiData.token);
+  const openTokApiInput = document.getElementById('opentok-api-data');
+
+  if(openTokApiInput) {
+    const openTokApiData = openTokApiInput.dataset;
+
+    const apiKey = openTokApiData.apiKey;
+    const sessionId = openTokApiData.sessionId;
+    const token = openTokApiData.token;
+
+    initializeSession(apiKey, sessionId, token);
+  }
 };
 
 export { initOpenTok };
