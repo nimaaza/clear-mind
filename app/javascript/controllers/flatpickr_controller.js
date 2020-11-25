@@ -83,7 +83,7 @@ export default class extends Flatpickr {
 
     if (!appointmentsOfDay || appointmentsOfDay.length >= 8) color = 'green';
     else if (appointmentsOfDay && appointmentsOfDay.length > 4) color = 'orange';
-    else if (appointmentsOfDay) color = 'red';
+    else color = 'red';
 
     dayElem.style.backgroundColor = color;
     dayElem.style.color = 'white';
