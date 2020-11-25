@@ -25,23 +25,23 @@ User.destroy_all
 print 'creating users (takes time)'
 
 # create one specific user to work with
-nima = User.new(
-  first_name: 'Nima',
-  last_name: 'Az',
-  email: 'nima@gmail.com',
+nada = User.new(
+  first_name: 'Nada',
+  last_name: 'Lakkis',
+  email: 'nada@gmail.com',
   phone_number: Faker::PhoneNumber.phone_number_with_country_code,
   birth_date: Faker::Date.between(from: '1975-01-01', to: '1985-01-01'),
-  gender: 'male',
+  gender: 'female',
   password: '123456',
   password_confirmation: '123456'
 )
 
-nima.avatar.attach(
+nada.avatar.attach(
   io: File.open('app/assets/images/clients/1.png'),
   filename: '1.png', content_type: 'image/png'
 )
 
-nima.save!
+nada.save!
 
 print '.'
 
@@ -97,8 +97,8 @@ print 'creating doctors (takes a while)'
 specializations = ['ADHD', 'Addiction', 'Anger Management', 'Anxiety', 'Bipolar Disorder', 'Borderline Disorder', 'Depression', 'Eating Disorders', 'Family Conflict', 'Grief', 'Martial and Premarital', 'Relationship Issues', 'Self-esteem', 'Sex Therapy', 'Stress', 'Trauma and PTSD']
 
 # create one specific doctor to work with
-doctor_first_name = Faker::Name.first_name
-doctor_last_name = Faker::Name.last_name
+doctor_first_name = 'Nima'
+doctor_last_name = 'Az'
 doctor_email = 'nimad@gmail.com'
 
 doctor_user = User.new(
