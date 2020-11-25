@@ -228,19 +228,19 @@ print 'creating reviews for doctors (goes fast)'
 
 Doctor.all.each do |doctor|
   rand(5..10).times do
-    review = Review.new(
-      doctor: doctor,
-      user: User.all.sample,
-      rating: rand(1..5),
-      content: reviews.shift,
-      date: Faker::Date.between(from: '2020-9-27', to: '2020-11-24'),
-    )
+    if reviews.count.positive?
+      review = Review.new(
+        doctor: doctor,
+        user: User.all.sample,
+        rating: rand(1..5),
+        content: reviews.shift,
+        date: Faker::Date.between(from: '2020-9-27', to: '2020-11-24'),
+      )
 
-    review.save!
+      review.save!
 
-    print '.'
-
-    return if reviews.count.zero?
+      print '.'
+    end
   end
 end
 
