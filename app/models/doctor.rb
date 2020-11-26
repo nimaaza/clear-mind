@@ -35,7 +35,7 @@ class Doctor < ApplicationRecord
       key = start_time.strftime('%d/%m/%Y')
       start_hour = start_time.hour
 
-      white_list[key] = (9..18).to_a unless white_list.key?(key)
+      white_list[key] = (9..20).to_a unless white_list.key?(key)
       white_list[key].delete(start_hour)
     end
 
@@ -49,7 +49,7 @@ class Doctor < ApplicationRecord
     if white_list[today].present?
       (9..this_hour).each { |hour| white_list[today].delete(hour) }
     else
-      white_list[today] = (this_hour..18).to_a
+      white_list[today] = (this_hour..20).to_a
     end
 
     white_list

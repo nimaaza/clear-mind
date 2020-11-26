@@ -58,7 +58,7 @@ export default class extends Flatpickr {
     const freeAppointmentsJSON = getAppointmentsJSON();
     let appointments = freeAppointmentsJSON[dateAsKey];
 
-    if (!appointments) appointments = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+    if (!appointments) appointments = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
     if (appointments.length > 0) {
       addCheckBoxesToForm(appointments, dateAsKey);
@@ -84,8 +84,8 @@ export default class extends Flatpickr {
 
     let color;
 
-    if (!appointmentsOfDay || appointmentsOfDay.length >= 8) color = '#17a2b8';
-    else if (appointmentsOfDay && appointmentsOfDay.length > 4) color = '#fd7e14';
+    if (!appointmentsOfDay || appointmentsOfDay.length >= 9) color = '#17a2b8';
+    else if (appointmentsOfDay && appointmentsOfDay.length > 3) color = '#fd7e14';
     else color = '#dc3545';
 
     dayElem.style.backgroundColor = color;

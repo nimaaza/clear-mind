@@ -26,8 +26,8 @@ print 'creating users (takes time)'
 
 # create one specific user to work with
 nada = User.new(
-  first_name: 'Nada',
-  last_name: 'Lakkis',
+  first_name: 'Layla',
+  last_name: 'Ahmed',
   email: 'nada@gmail.com',
   phone_number: Faker::PhoneNumber.phone_number_with_country_code,
   birth_date: Faker::Date.between(from: '1975-01-01', to: '1985-01-01'),
@@ -116,7 +116,7 @@ doctor_user = User.new(
 doctor_user.save!
 
 doctor_alex = Doctor.new(
-  specializations: ['Stress', 'Relationship', 'Grief'].to_s,
+  specializations: ['Stress', 'Anxiety', 'Family'].to_s,
   first_name: doctor_first_name,
   last_name: doctor_last_name,
   email: doctor_email,
@@ -153,7 +153,7 @@ doctor_user = User.new(
 doctor_user.save!
 
 doctor_nima = Doctor.new(
-  specializations: ['Stress', 'Relationship', 'Grief'].to_s,
+  specializations: ['Stress', 'Anxiety', 'Family'].to_s,
   first_name: doctor_first_name,
   last_name: doctor_last_name,
   email: doctor_email,
@@ -232,7 +232,7 @@ Doctor.all.each do |doctor|
       review = Review.new(
         doctor: doctor,
         user: User.all.sample,
-        rating: rand(1..5),
+        rating: rand(3..5),
         content: reviews.shift,
         date: Faker::Date.between(from: '2020-9-27', to: '2020-11-24'),
       )

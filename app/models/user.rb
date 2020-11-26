@@ -21,7 +21,7 @@ class User < ApplicationRecord
     # next_hour = Time.new(now.year, now.month, now.day, now.hour + 1, 0, 0)
     # appointments.find_by('appointment_start = ? and appointment_end = ?', start, next_hour)
 
-    Appointment.first
+    Appointment.last
   end
 
   def doctor?

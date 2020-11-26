@@ -11,7 +11,7 @@
       <h1 class="doctors_title">Hello, <%= current_user.full_name %>!</h1>
     <% end %>
     <% unless @appointment.nil? %>
-      <p>Yay, Your appointment with Dr. <%= @appointment.doctor.full_name  %> is about to <span class="highlight pl-2 pr-2">start now</span></p>
+      <p>Yay, your appointment with Dr. <%= @appointment.doctor.full_name  %> is about to <span class="highlight pl-2 pr-2">start now!</span></p>
     <% else %>
       <p>You don't have any appointments for today, but check your future appointments to see what's ahead.</p>
     <% end %>
