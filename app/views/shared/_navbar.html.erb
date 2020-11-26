@@ -1,20 +1,19 @@
 <%# <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>   
+    <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">Clear Mind</a>
+                        <%= link_to 'Clear Mind', root_path, class: 'logo' %>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#welcome" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="http://localhost:3000/doctors/">list of Doctors</a></li>
-                            <li class="scroll-to-section"><a href="#frequently-question">Dashboard</a></li>
+                            <li class="scroll-to-section"><%= link_to 'Home', root_path, class: 'active' %></li>
+                            <li class="scroll-to-section"><%= link_to 'About', '#' %></li>
+                            <li class="scroll-to-section"><%= link_to 'Our Doctors', doctors_path %></li>
                             <%# <li class="submenu"> %>
                                 <%# <a href="javascript:;">Drop Down</a>
                                 <ul>
@@ -24,11 +23,10 @@
                                     <li><a href="">Blog</a></li>
                                 </ul> %>
                             <%# </li> %>
-                             
+
                         <% if user_signed_in? %>
                             <li>
-                                <%= link_to "dashboard", "#" %>
-            
+                                <%= link_to "Dashboard", dashboard_path %>
                             </li>
                             <li>
                             <%= link_to "Log out", destroy_user_session_path, method: :delete %>
@@ -38,8 +36,8 @@
                                 <%= link_to "Login", new_user_session_path %>
                             </li>
                         <% end %>
-                                   
-                               
+
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
