@@ -10,7 +10,8 @@
   div {
     width: 40vw !important;
     height: 50vh !important;
-    background-color: black;
+    max-width: 500px;
+    // background-color: black;
   }
 }
 
@@ -21,6 +22,12 @@
   div {
     width: 40vw !important;
     height: 50vh !important;
-    background-color: purple;
+    max-width: 500px;
+    // background-color: purple;
   }
+}
+
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
