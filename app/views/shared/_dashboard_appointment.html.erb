@@ -1,9 +1,8 @@
 <!-- head_line -->
 <!-- appointment -->
 
-
 <% doctor = appointment.doctor %>
-
+<% user = appointment.user %>
 <div class="dashboard-call-to-action">
   <h1><%= head_line %></h1>
 
@@ -16,8 +15,8 @@
       <i class="fas fa-people-arrows"></i> Join Meeting
     <% end %>
 
-    <% if current_user.avatar.attached? %>
-      <%= cl_image_tag current_user.avatar.key, crop: :fill, class: 'dashboard-big-avatar' %>
+    <% if user.avatar.attached? %>
+      <%= cl_image_tag user.avatar.key, crop: :fill, class: 'dashboard-big-avatar' %>
     <% end %>
   </div>
   <p>Good news: you don't need any 3rd party application for joining the meeting!</p>
