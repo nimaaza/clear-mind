@@ -39,26 +39,16 @@
               <div class="doctor-card-avatar-rating-index">
                 <% if doctor.avatar.attached? %>
                   <%= cl_image_tag doctor.avatar.key, crop: :fill %>
-              <%= render 'shared/rating', rating: rating %>
-            </div>
-            <div class="doctor-card-infos-index">
-              <h2 class='text-green'>Dr. <%= "#{doctor.first_name} #{doctor.last_name}" %></h2>
-              <p class='text-truncate' style='width: 10%'><%= doctor.about %></p>
-              <h6 class="text-muted text-uppercase mt-4">Specializations</h6>
-              <ul class='d-flex'>
-                <% specializations.each do |specialization| %>
-                  <li class='badge badge-tag mr-2'><%= specialization %></li>
                 <% end %>
                 <%= render 'shared/rating', rating: rating %>
-
               </div>
               <div class="doctor-card-infos-index">
                 <h2 class='text-green'>Dr. <%= "#{doctor.first_name} #{doctor.last_name}" %></h2>
-                <p><%= doctor.about %></p>
+                <p class='text-truncate' style='width: 10%'><%= doctor.about %></p>
                 <h6 class="text-muted text-uppercase mt-4">Specializations</h6>
                 <ul class='d-flex'>
                   <% specializations.each do |specialization| %>
-                    <li class='badge badge-primary mr-2'><%= specialization %></li>
+                    <li class='badge badge-tag mr-2'><%= specialization %></li>
                   <% end %>
                 </ul>
               </div>
