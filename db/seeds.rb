@@ -94,7 +94,7 @@ puts "found #{about_texts.count} about texts to use."
 
 print 'creating doctors (takes a while)'
 
-specializations = ['ADHD', 'Addiction', 'Anger Management', 'Anxiety', 'Bipolar Disorder', 'Borderline Disorder', 'Depression', 'Eating Disorders', 'Family Conflict', 'Grief', 'Martial and Premarital', 'Relationship Issues', 'Self-esteem', 'Sex Therapy', 'Stress', 'Trauma and PTSD']
+specializations = ['ADHD', 'Addiction', 'Anxiety', 'Bipolar', 'Borderline', 'Depression', 'Family', 'Grief', 'Relationship', 'Self-esteem', 'Sex-therapy', 'Stress', 'Trauma', 'PTSD']
 
 # create two specific doctors to work with
 # first one - very busy

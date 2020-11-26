@@ -20,26 +20,26 @@
       <div class="card shadow p-4 no-border border-radius-8">
         <p class='text-green text-uppercase'>Total Specialists</p>
         <h2><%= @doctors.size %></h2>
+        <div id="div-specializations" class="btn-group-vertical"></div>
       </div>
     </div>
 
     <div class="col-8 radius-8">
-      <% @doctors.each do |doctor_hash| %>
-        <% doctor = doctor_hash[:doctor] %>
-        <% specializations = doctor_hash[:specializations] %>
-        <% rating = doctor_hash[:rating] %>
-
-          <div class="doctor-card-index shadow p-4 mt-0">
-
-            <%= link_to doctor_path(doctor), class: 'doctor-card-index-link' do %>
-              <span></span>
-            <% end %>
-            <div class="doctor-card-avatar-rating-index">
-              <% if doctor.avatar.attached? %>
-                <%= cl_image_tag doctor.avatar.key, crop: :fill %>
+      <div class="isotope-grid">
+        <% @doctors.each do |doctor_hash| %>
+          <% doctor = doctor_hash[:doctor] %>
+          <% specializations = doctor_hash[:specializations] %>
+          <% rating = doctor_hash[:rating] %>
+          <% isotope_grid_item_class = "isotope-grid-item #{specializations.join(' ')}" %>
+          <div class="<%= isotope_grid_item_class %>">
+            <div class="doctor-card-index shadow p-4 mt-0">
+              <%= link_to doctor_path(doctor), class: 'doctor-card-index-link' do %>
+                <span></span>
               <% end %>
+              <div class="doctor-card-avatar-rating-index">
+                <% if doctor.avatar.attached? %>
+                  <%= cl_image_tag doctor.avatar.key, crop: :fill %>
               <%= render 'shared/rating', rating: rating %>
-
             </div>
             <div class="doctor-card-infos-index">
               <h2 class='text-green'>Dr. <%= "#{doctor.first_name} #{doctor.last_name}" %></h2>
@@ -49,10 +49,23 @@
                 <% specializations.each do |specialization| %>
                   <li class='badge badge-tag mr-2'><%= specialization %></li>
                 <% end %>
-              </ul>
+                <%= render 'shared/rating', rating: rating %>
+
+              </div>
+              <div class="doctor-card-infos-index">
+                <h2 class='text-green'>Dr. <%= "#{doctor.first_name} #{doctor.last_name}" %></h2>
+                <p><%= doctor.about %></p>
+                <h6 class="text-muted text-uppercase mt-4">Specializations</h6>
+                <ul class='d-flex'>
+                  <% specializations.each do |specialization| %>
+                    <li class='badge badge-primary mr-2'><%= specialization %></li>
+                  <% end %>
+                </ul>
+              </div>
             </div>
           </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
