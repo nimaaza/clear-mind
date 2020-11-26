@@ -42,6 +42,7 @@
 
   h1, h2, p {
     text-align: center;
+    color: #0D3B86
   }
 }
 
@@ -136,12 +137,12 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: #71c9cb;
   transition: background 0.3s ease;
   // height: 50px;
 }
 
 .btn-flat:hover {
-  background: #1BCB7F;
+  background:#71c9cb87;
   color: white;
 }
