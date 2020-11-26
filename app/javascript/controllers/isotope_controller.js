@@ -14,13 +14,21 @@ const initIsotope = () => {
   const divSpecializations = document.querySelector('#div-specializations');
 
   specializations.forEach((specialization) => {
-    const button = `<button>${specialization}</button>`;
-
-    button.addEventListener('click', (event) => {
-
-    });
-
+    const button = `<button class="isotope-filter-buttons">${specialization}</button>`;
     divSpecializations.insertAdjacentHTML('beforeend', button);
+  });
+
+  const buttons = document.querySelectorAll('.isotope-filter-buttons');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      iso.arrange({
+        // item element provided as argument
+        filter: function( itemElem ) {
+          itemElem.classList.contains(button.textContent);
+        }
+      });
+    });
   });
 };
 
