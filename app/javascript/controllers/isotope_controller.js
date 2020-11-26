@@ -14,7 +14,7 @@ const initIsotope = () => {
   const divSpecializations = document.querySelector('#div-specializations');
 
   specializations.forEach((specialization) => {
-    const button = `<button class="isotope-filter-buttons">${specialization}</button>`;
+    const button = `<button type="button" class="isotope-filter-buttons btn btn-secondary">${specialization}</button>`;
     divSpecializations.insertAdjacentHTML('beforeend', button);
   });
 
