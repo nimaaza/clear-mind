@@ -7,7 +7,7 @@ const specializations = ['ADHD', 'Addiction', 'Anxiety', 'Bipolar',
 const initIsotope = () => {
   const elem = document.querySelector('.isotope-grid');
   const iso = new Isotope(elem, {
-    itemSelector: 'isotope-grid-item',
+    itemSelector: '.isotope-grid-item',
     layoutMode: 'vertical'
   });
 
