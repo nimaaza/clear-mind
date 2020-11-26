@@ -116,7 +116,7 @@ doctor_user = User.new(
 doctor_user.save!
 
 doctor_alex = Doctor.new(
-  specializations: ['Stress' 'Relationship Issues', 'Grief'].to_s,
+  specializations: ['Stress', 'Relationship', 'Grief'].to_s,
   first_name: doctor_first_name,
   last_name: doctor_last_name,
   email: doctor_email,
@@ -153,7 +153,7 @@ doctor_user = User.new(
 doctor_user.save!
 
 doctor_nima = Doctor.new(
-  specializations: ['Stress' 'Relationship Issues', 'Grief'].to_s,
+  specializations: ['Stress', 'Relationship', 'Grief'].to_s,
   first_name: doctor_first_name,
   last_name: doctor_last_name,
   email: doctor_email,

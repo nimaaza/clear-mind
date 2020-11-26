@@ -75,6 +75,15 @@ body {
   width: 100%;
 }
 
+.isotope-filter-buttons {
+  background-color: #17a2b8 !important;
+  color: white !important;
+}
+
+.isotope-filter-buttons:hover {
+  background-color: #17a2b8db !important;
+}
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
@@ -87,19 +96,4 @@ body {
   background: #1BCB7F;
   color: white;
 }
-
-//button
-// .btn-ghost {
-//   color: #4A4A4A;
-//   border: 1px solid #4A4A4A;
-//   padding: 8px 24px;
-//   border-radius: 50px;
-//   font-weight: lighter;
-//   opacity: 0.6;
-//   transition: opacity 0.3s ease;
-// }
-
-// .btn-ghost:hover {
-//   opacity: 1;
-// }
 
