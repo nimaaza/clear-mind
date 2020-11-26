@@ -23,9 +23,8 @@ const initIsotope = () => {
   buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
       iso.arrange({
-        // item element provided as argument
         filter: function( itemElem ) {
-          itemElem.classList.contains(button.textContent);
+          return itemElem.classList.contains(button.textContent);
         }
       });
     });
