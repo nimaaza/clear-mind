@@ -14,7 +14,7 @@
 }
 
 .text-green{
-  color: #1d7156 !important;
+  color: #0794e8 !important;
 }
 
 .border-radius-8{
@@ -23,6 +23,36 @@
 
 .border-bottom-blue{
   border-bottom: 1px solid blue;
+}
+
+.badge-tag{
+  color: #fff;
+  background-color: var(--info);
+}
+
+.badge-tag-soft{
+  color: #fff;
+  background-color: #ffffff4f;
+  text-shadow: 0 0 1px grey;
+  padding: .4em .7em !important;
+}
+
+.d-grid{
+  display: grid;
+}
+.grid-calendar{
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.btn-action{
+  color: #fff !important;
+  background-color: #f55858 !important;
+  border-color: #f55858 !important;
+}
+
+.text-bold{
+  font-weight: bold !important;
 }
 
 //design for doctor show page

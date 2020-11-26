@@ -3,7 +3,7 @@ require 'opentok'
 class MeetingsController < ApplicationController
   def meet
     appointment = current_user.current_appointment
-
+    @doctor = appointment.doctor.full_name
     if appointment.nil?
       #
     else
