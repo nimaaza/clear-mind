@@ -11,7 +11,7 @@
       <h1 class="doctors_title">Hello, <%= current_user.full_name %>!</h1>
     <% end %>
     <% unless @appointment.nil? %>
-      <p>Your appointment for today runs from <%= start_time %> to <%= end_time %>.</p>
+      <p>Yay, Your appointment with Dr. <%= @appointment.doctor.full_name  %> is about to <span class="highlight pl-2 pr-2">start now</span></p>
     <% else %>
       <p>You don't have any appointments for today, but check your future appointments to see what's ahead.</p>
     <% end %>
@@ -25,15 +25,15 @@
 </div>
 
 
-<ul class="nav nav-tabs" id="dashboard-tab-items" role="tablist">
+<ul class="nav nav-tabs container mt-n10 justify-content-center" id="dashboard-tab-items" role="tablist">
   <% second_tab_link_class = @appointment.nil? ? "nav-link active" : "nav-link" %>
 
   <% if current_user.doctor? %>
     <!-- tabs for doctor users -->
     <% unless @appointment.nil? %>
-      <li class="nav-item" role="presentation">
+      <li class="nav-item text-bold" role="presentation">
         <a class="nav-link active" id="current-appointment-tab" data-toggle="tab" href="#current-appointment" role="tab" aria-controls="home" aria-selected="true">
-          Now: Appointment with <%= @appointment.user.full_name %>
+          Your Current Appointment
         </a>
       </li>
     <% end %>
@@ -46,9 +46,9 @@
   <% else %>
     <!-- tabs for client users -->
     <% unless @appointment.nil? %>
-      <li class="nav-item" role="presentation">
+      <li class="nav-item text-bold" role="presentation">
         <a class="nav-link active" id="current-appointment-tab" data-toggle="tab" href="#current-appointment" role="tab" aria-controls="home" aria-selected="true">
-          Now: Appointment with Doctor <%= @appointment.doctor.full_name %>
+          Your Current Appointment
         </a>
       </li>
     <% end %>
@@ -75,7 +75,7 @@
 
 <% second_tab_class = @appointment.nil? ? "tab-pane fade show active" : "tab-pane fade" %>
 
-<div class="tab-content" id="dashboard-tab-content">
+<div class="tab-content container" id="dashboard-tab-content">
   <% if current_user.doctor? %>
     <!-- doctors' contents -->
     <% unless @appointment.nil? %>

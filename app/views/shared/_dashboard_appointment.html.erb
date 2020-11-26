@@ -4,14 +4,14 @@
 <% doctor = appointment.doctor %>
 <% user = appointment.user %>
 <div class="dashboard-call-to-action">
-  <h1><%= head_line %></h1>
+  <!-- <h1><%#= head_line %></h1> -->
 
   <div>
     <% if doctor.avatar.attached? %>
       <%= cl_image_tag doctor.avatar.key, crop: :fill, class: 'dashboard-big-avatar' %>
     <% end %>
 
-    <%= link_to meet_path, class: 'btn-flat' do %>
+    <%= link_to meet_path, class: 'btn-flat btn-action' do %>
       <i class="fas fa-people-arrows"></i> Join Meeting
     <% end %>
 
@@ -19,5 +19,5 @@
       <%= cl_image_tag user.avatar.key, crop: :fill, class: 'dashboard-big-avatar' %>
     <% end %>
   </div>
-  <p>Good news: you don't need any 3rd party application for joining the meeting!</p>
+  <p class="mt-3 text-uppercase">Good news: you don't need any 3rd party application for joining the meeting!</p>
 </div>

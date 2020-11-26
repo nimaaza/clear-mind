@@ -18,13 +18,15 @@
   <div class="row">
     <div class="col-4">
       <div class="card shadow p-4 no-border border-radius-8">
-        <p class='text-green text-uppercase'>Total Specialists</p>
-        <h2><%= @doctors.size %></h2>
+        <div class="d-flex flex-column align-items-center">
+          <p class='text-green text-uppercase'>Total Specialists</p>
+          <h2><%= @doctors.size %></h2>
+        </div>
         <div id="div-specializations" class="btn-group-vertical"></div>
       </div>
     </div>
 
-    <div class="col-8 radius-8">
+    <div class="col-8 radius-8 overflow-scoll vh-100">
       <div class="isotope-grid">
         <% @doctors.each do |doctor_hash| %>
           <% doctor = doctor_hash[:doctor] %>
